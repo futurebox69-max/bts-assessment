@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미래역량 검사 — AI와 함께 성장할 나의 강점 찾기</title>
+<meta name="description" content="AI 시대, 당신의 강점과 성장 포인트를 6차원으로 탐색합니다. 3분, 8문항, 무료. 결과는 바로 확인 가능합니다.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#6C63FF">
+<meta property="og:title" content="미래역량 검사 — AI 시대 나의 강점 발견하기">
+<meta property="og:description" content="위협이 아닌 기회로 보는 역량 지도. 3분, 8문항으로 내 강점 2개와 성장 포인트 2개를 확인하세요.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://bts-assessment.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- Track helper (safe no-op when analytics isn't loaded) -->
+<script>
+window.bt = window.bt || {};
+window.bt.track = function(name, data){
+  try {
+    if (typeof window.va === 'function') window.va('event', { name, data });
+    if (typeof window.dataLayer !== 'undefined') window.dataLayer.push({ event: name, ...data });
+  } catch(e){}
+};
+</script>
+<!-- <meta property="og:image" content="https://bts-assessment.vercel.app/og-image.png"> -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+:root {
+  --bg: #F8F7FF;
+  --surface: #fff;
+  --primary: #6C63FF;
+  --primary-light: #EDE9FE;
+  --accent: #4ECDC4;
+  --coral: #FF6B6B;
+  --gold: #FFE66D;
+  --pink: #F472B6;
+  --purple: #A78BFA;
+  --green: #34D399;
+  --text: #1E1B4B;
+  --text-dim: #6B7280;
+  --text-light: #9CA3AF;
+  --border: #EDE9FE;
+  --shadow: 0 4px 24px rgba(108,99,255,0.08);
+  --radius: 20px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); -webkit-tap-highlight-color:transparent; transition:background 0.8s ease; }
+button { font-family:inherit; cursor:pointer; touch-action:manipulation; }
+
+/* ===== SECTIONS ===== */
+.section { padding:60px 20px; max-width:640px; margin:0 auto; }
+.section-tag { display:inline-block; background:var(--primary-light); color:var(--primary); font-size:12px; font-weight:700; padding:4px 12px; border-radius:100px; letter-spacing:0.5px; margin-bottom:12px; }
+.section-title { font-size:26px; font-weight:900; line-height:1.4; margin-bottom:12px; }
+.section-desc { font-size:15px; color:var(--text-dim); line-height:1.7; }
+
+/* ===== HERO ===== */
+.hero { text-align:center; padding:80px 20px 60px; background:linear-gradient(160deg, #6C63FF 0%, #8B5CF6 40%, #A78BFA 100%); color:#fff; position:relative; overflow:hidden; }
+.hero::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:60px; background:var(--bg); border-radius:50% 50% 0 0; }
+.hero-badge { display:inline-block; background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); padding:6px 16px; border-radius:100px; font-size:12px; font-weight:600; margin-bottom:20px; letter-spacing:0.5px; }
+.hero h1 { font-size:32px; font-weight:900; line-height:1.3; margin-bottom:12px; }
+.hero p { font-size:15px; opacity:0.85; line-height:1.6; max-width:400px; margin:0 auto 28px; }
+.hero-stats { display:flex; justify-content:center; gap:32px; margin-bottom:24px; }
+.hero-stat { text-align:center; }
+.hero-stat-val { font-size:28px; font-weight:900; }
+.hero-stat-label { font-size:11px; opacity:0.7; }
+.hero-cta { display:inline-block; padding:16px 36px; border-radius:14px; background:#fff; color:var(--primary); font-size:16px; font-weight:700; text-decoration:none; border:none; box-shadow:0 8px 32px rgba(0,0,0,0.15); transition:transform 0.2s; position:relative; z-index:2; }
+.hero-cta:active { transform:scale(0.97); }
+.hero-cta.secondary { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.5); box-shadow:none; }
+.hero-cta.secondary:hover { background:rgba(255,255,255,0.1); }
+.hero-ctas { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; position:relative; z-index:2; }
+
+/* Hero sample preview (desktop 2-column) */
+.hero-inner { max-width:1080px; margin:0 auto; }
+.hero-sample { display:none; }
+.hero-sample-card { background:rgba(255,255,255,0.12); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.2); border-radius:20px; padding:24px; text-align:left; }
+.hero-sample-title { font-size:12px; font-weight:700; letter-spacing:1px; opacity:0.85; margin-bottom:14px; text-transform:uppercase; }
+.hero-sample-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; font-size:13px; }
+.hero-sample-row .sname { flex:1; opacity:0.95; }
+.hero-sample-row .sval { font-weight:800; font-variant-numeric:tabular-nums; }
+.hero-sample-bar { height:5px; background:rgba(255,255,255,0.2); border-radius:3px; overflow:hidden; margin-top:3px; }
+.hero-sample-fill { height:100%; background:#fff; border-radius:3px; }
+.hero-sample-note { font-size:11px; opacity:0.7; margin-top:12px; text-align:center; }
+
+@media(min-width:880px) {
+  .hero { padding:90px 20px 100px; }
+  .hero-inner { display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:center; text-align:left; }
+  .hero-text { text-align:left; }
+  .hero h1 { font-size:40px; }
+  .hero p { margin-left:0; margin-right:0; }
+  .hero-stats { justify-content:flex-start; }
+  .hero-ctas { justify-content:flex-start; }
+  .hero-sample { display:block; }
+}
+
+/* ===== WHY SECTION ===== */
+.why-cards { display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+.why-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); }
+.why-icon { font-size:28px; flex-shrink:0; width:40px; text-align:center; }
+.why-text h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+.why-text p { font-size:13px; color:var(--text-dim); line-height:1.6; }
+
+/* ===== DIMENSION SECTION ===== */
+.dim-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+.dim-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 16px; text-align:center; box-shadow:var(--shadow); transition:transform 0.2s; }
+.dim-card:active { transform:scale(0.97); }
+.dim-emoji { font-size:32px; margin-bottom:8px; }
+.dim-name { font-size:14px; font-weight:700; margin-bottom:4px; }
+.dim-desc { font-size:11px; color:var(--text-dim); line-height:1.5; }
+
+/* ===== METHOD SECTION ===== */
+.method-cards { display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+.method-card { background:var(--surface); border:1.5px solid var(--border); border-radius:16px; padding:18px; display:flex; gap:14px; align-items:center; box-shadow:var(--shadow); }
+.method-card.active { border-color:var(--primary); background:var(--primary-light); }
+.method-icon { font-size:28px; flex-shrink:0; }
+.method-info h4 { font-size:14px; font-weight:700; margin-bottom:2px; }
+.method-info p { font-size:12px; color:var(--text-dim); }
+.method-tag { font-size:10px; font-weight:600; padding:2px 8px; border-radius:6px; background:rgba(108,99,255,0.1); color:var(--primary); margin-top:4px; display:inline-block; }
+
+/* ===== CTA SECTION ===== */
+.cta-section { text-align:center; padding:60px 20px; }
+.cta-btn { display:inline-block; padding:18px 48px; border-radius:16px; background:linear-gradient(135deg,var(--primary),#8B5CF6); color:#fff; font-size:17px; font-weight:700; border:none; box-shadow:0 8px 32px rgba(108,99,255,0.35); transition:transform 0.2s; }
+.cta-btn:active { transform:scale(0.97); }
+.cta-sub { font-size:13px; color:var(--text-light); margin-top:12px; }
+
+/* ===== SCREEN SYSTEM ===== */
+.screen { display:none; min-height:100vh; }
+.screen.active { display:block; }
+
+/* ===== ASSESSMENT ===== */
+.assess-header { text-align:center; padding:20px; background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:10; }
+.assess-progress { display:flex; align-items:center; gap:12px; justify-content:center; }
+.assess-bar { flex:1; max-width:200px; height:6px; background:#EDE9FE; border-radius:3px; overflow:hidden; }
+.assess-fill { height:100%; background:var(--primary); border-radius:3px; transition:width 0.3s; }
+.assess-timer { font-size:24px; font-weight:900; color:var(--primary); font-variant-numeric:tabular-nums; }
+.assess-timer.warning { color:#F59E0B; }
+.assess-count { font-size:12px; color:var(--text-dim); font-weight:600; }
+
+.assess-body { max-width:500px; margin:0 auto; padding:24px 20px; }
+.assess-context { font-size:11px; font-weight:600; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+.assess-emoji { font-size:36px; margin-bottom:10px; }
+.assess-question { font-size:16px; font-weight:600; line-height:1.7; margin-bottom:20px; }
+
+.assess-choices { display:flex; flex-direction:column; gap:10px; }
+.assess-choice { background:var(--surface); border:1.5px solid var(--border); border-radius:14px; padding:14px 16px; text-align:left; display:flex; align-items:center; gap:12px; transition:all 0.2s; touch-action:manipulation; }
+.assess-choice:active { transform:scale(0.98); }
+.assess-choice.selected { border-color:var(--primary); background:var(--primary-light); }
+.assess-key { width:28px; height:28px; border-radius:8px; background:var(--primary-light); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--primary); flex-shrink:0; }
+.assess-choice-text { font-size:13px; line-height:1.5; }
+
+/* Image choices */
+.assess-image-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.assess-image-card { background:var(--surface); border:1.5px solid var(--border); border-radius:14px; padding:18px; text-align:center; transition:all 0.2s; touch-action:manipulation; }
+.assess-image-card:active { transform:scale(0.97); }
+.assess-image-card.selected { border-color:var(--accent); background:rgba(78,205,196,0.08); }
+.assess-image-card .emoji { font-size:36px; margin-bottom:6px; }
+.assess-image-card .label { font-size:13px; font-weight:600; }
+.assess-image-card .desc { font-size:11px; color:var(--text-dim); margin-top:2px; }
+
+/* Rank items */
+.rank-list { display:flex; flex-direction:column; gap:8px; }
+.rank-item { background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px; touch-action:none; user-select:none; transition:all 0.2s; }
+.rank-item.dragging { opacity:0.5; border-color:var(--primary); }
+.rank-num { width:24px; height:24px; border-radius:6px; background:var(--primary); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#fff; flex-shrink:0; }
+.rank-text { font-size:13px; flex:1; }
+.rank-handle { color:var(--text-light); font-size:16px; }
+.rank-confirm { width:100%; padding:14px; border-radius:12px; background:linear-gradient(135deg,var(--primary),#8B5CF6); color:#fff; font-size:14px; font-weight:600; border:none; margin-top:12px; }
+.rank-confirm:disabled { opacity:0.4; }
+
+/* Feedback flash */
+.feedback { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(30,27,75,0.95); color:#fff; padding:20px 32px; border-radius:18px; font-size:17px; font-weight:700; z-index:100; pointer-events:none; opacity:0; transition:opacity 0.3s; text-align:center; max-width:280px; }
+.feedback.show { opacity:1; }
+
+/* Skip button */
+.skip-btn { position:fixed; top:16px; right:16px; z-index:20; background:rgba(0,0,0,0.05); border:none; padding:8px 16px; border-radius:10px; font-size:12px; color:var(--text-dim); touch-action:manipulation; }
+
+/* ===== RESULT SCREEN ===== */
+.result-hero { text-align:center; padding:40px 20px 20px; }
+.result-emoji { font-size:56px; margin-bottom:8px; }
+.result-type { font-size:24px; font-weight:900; margin-bottom:4px; }
+.result-sub { font-size:14px; color:var(--text-dim); margin-bottom:24px; }
+
+.result-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px 20px; margin:0 20px 16px; max-width:500px; margin-left:auto; margin-right:auto; box-shadow:var(--shadow); }
+.result-card-title { font-size:14px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+
+.score-row { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.score-icon { font-size:18px; width:24px; text-align:center; }
+.score-info { flex:1; }
+.score-label { display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px; }
+.score-name { font-weight:500; }
+.score-val { font-weight:700; color:var(--primary); }
+.score-bar { height:6px; background:#EDE9FE; border-radius:3px; overflow:hidden; }
+.score-fill { height:100%; border-radius:3px; transition:width 1.2s ease; }
+
+.insight-text { font-size:14px; line-height:1.7; color:var(--text-dim); }
+.insight-highlight { color:var(--primary); font-weight:600; }
+
+/* BTS CTA */
+.bts-cta { background:linear-gradient(135deg,#1E1B4B,#312E81); border-radius:var(--radius); padding:28px 24px; text-align:center; color:#fff; margin:16px 20px; max-width:500px; margin-left:auto; margin-right:auto; }
+.bts-cta h3 { font-size:18px; font-weight:800; margin-bottom:8px; }
+.bts-cta p { font-size:13px; opacity:0.8; line-height:1.6; margin-bottom:16px; }
+.bts-btn { display:inline-block; padding:14px 32px; border-radius:12px; background:#fff; color:#1E1B4B; font-size:15px; font-weight:700; border:none; box-shadow:0 4px 16px rgba(0,0,0,0.2); cursor:pointer; }
+.bts-features { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+.bts-feat { font-size:11px; padding:3px 10px; border-radius:8px; background:rgba(255,255,255,0.12); }
+
+/* Footer */
+footer { text-align:center; padding:40px 20px; font-size:12px; color:var(--text-light); }
+footer a { color:var(--primary); text-decoration:none; font-weight:600; }
+
+@media(max-width:400px) {
+  .hero h1 { font-size:26px; }
+  .section-title { font-size:22px; }
+  .dim-grid { grid-template-columns:1fr; }
+}
+/* ===== LOADING SCREEN ===== */
+.loading-center { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:40px 20px; text-align:center; }
+.loading-emoji { font-size:48px; margin-bottom:16px; animation:loadingPulse 1.5s infinite; }
+@keyframes loadingPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+.loading-title { font-size:20px; font-weight:700; color:var(--text); margin-bottom:24px; }
+.loading-bar-wrap { width:200px; height:6px; background:#EDE9FE; border-radius:3px; overflow:hidden; margin-bottom:16px; }
+.loading-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--accent)); border-radius:3px; transition:width 0.3s; }
+.loading-status { font-size:13px; color:var(--text-dim); min-height:20px; }
+
+/* ===== GAUGE ===== */
+.gauge-wrap { position:relative; width:200px; height:110px; margin:0 auto 8px; }
+.gauge-svg { width:200px; height:110px; }
+.gauge-bg { fill:none; stroke:#EDE9FE; stroke-width:12; stroke-linecap:round; }
+.gauge-fill { fill:none; stroke:var(--primary); stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset 1.5s ease-out; }
+.gauge-score { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:36px; font-weight:900; color:var(--text); }
+.gauge-label { text-align:center; font-size:12px; color:var(--text-dim); margin-bottom:16px; }
+
+/* ===== ENHANCED SCORES ===== */
+.strength-badge { display:inline-block; background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:2px 8px; border-radius:6px; margin-left:8px; }
+.growth-badge { display:inline-block; background:#FFF3CD; color:#856404; font-size:11px; font-weight:600; padding:2px 8px; border-radius:6px; margin-left:8px; }
+
+/* ===== SHARE ===== */
+.share-wrap { display:flex; gap:10px; justify-content:center; }
+.share-btn { display:flex; align-items:center; gap:6px; padding:12px 20px; border-radius:12px; border:1.5px solid var(--border); background:var(--surface); font-size:13px; font-weight:600; color:var(--text); transition:all 0.2s; touch-action:manipulation; }
+.share-btn:active { transform:scale(0.97); }
+.share-btn.copied { border-color:var(--accent); background:rgba(78,205,196,0.08); color:var(--accent); }
+.share-toast { position:fixed; bottom:40px; left:50%; transform:translateX(-50%) translateY(20px); background:rgba(30,27,75,0.9); color:#fff; padding:12px 24px; border-radius:12px; font-size:13px; font-weight:600; z-index:100; opacity:0; transition:all 0.3s; pointer-events:none; }
+.share-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ===== BLUR PREVIEW ===== */
+.blur-preview { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px; margin-bottom:12px; filter:blur(6px); user-select:none; pointer-events:none; }
+.blur-preview p { font-size:13px; line-height:1.8; color:var(--text-dim); }
+.email-form { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+.email-input { width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:12px; font-size:14px; font-family:inherit; outline:none; transition:border-color 0.2s; }
+.email-input:focus { border-color:var(--primary); }
+.consent-row { display:flex; align-items:flex-start; gap:8px; }
+.consent-row input[type="checkbox"] { margin-top:3px; accent-color:var(--primary); }
+.consent-row label { font-size:12px; color:var(--text-dim); line-height:1.5; }
+.email-submit { width:100%; padding:14px; border-radius:12px; background:linear-gradient(135deg,var(--primary),#8B5CF6); color:#fff; font-size:14px; font-weight:600; border:none; transition:opacity 0.2s; }
+.email-submit:disabled { opacity:0.4; cursor:not-allowed; }
+.email-note { font-size:11px; color:var(--text-light); text-align:center; margin-top:4px; }
+
+/* ===== QUESTION TRANSITION ===== */
+.assess-body { transition:opacity 0.3s ease; }
+.assess-body.fade-out { opacity:0; }
+
+/* ===== PARTICLES ===== */
+.particle-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:200; overflow:hidden; }
+.particle { position:absolute; font-size:24px; animation:particleFly 1s ease-out forwards; pointer-events:none; }
+@keyframes particleFly {
+  0% { opacity:1; transform:translateY(0) scale(1); }
+  100% { opacity:0; transform:translateY(-120px) scale(0.3); }
+}
+
+/* ===== COMBO ===== */
+.combo-badge { position:fixed; top:80px; right:20px; background:linear-gradient(135deg,#FF6B6B,#FF8E53); color:#fff; padding:8px 16px; border-radius:12px; font-size:14px; font-weight:800; z-index:50; opacity:0; transform:scale(0.5); transition:all 0.3s; pointer-events:none; }
+.combo-badge.show { opacity:1; transform:scale(1); }
+.combo-badge.show { animation:comboPop 0.4s ease; }
+@keyframes comboPop { 0%{transform:scale(0.5)} 50%{transform:scale(1.2)} 100%{transform:scale(1)} }
+
+/* ===== CHARACTER GUIDE ===== */
+.bt-guide { display:flex; align-items:flex-start; gap:10px; background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:14px 16px; margin:0 20px 16px; max-width:500px; margin-left:auto; margin-right:auto; animation:slideUp 0.4s ease; }
+.bt-avatar { font-size:28px; flex-shrink:0; }
+.bt-msg { font-size:13px; color:var(--text-dim); line-height:1.6; }
+.bt-msg strong { color:var(--text); }
+@keyframes slideUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== INTERMISSION ===== */
+.intermission { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:60vh; text-align:center; padding:40px 20px; }
+.inter-emoji { font-size:48px; margin-bottom:12px; animation:loadingPulse 1.5s infinite; }
+.inter-title { font-size:22px; font-weight:800; color:var(--text); margin-bottom:8px; }
+.inter-sub { font-size:14px; color:var(--text-dim); margin-bottom:20px; line-height:1.6; }
+.inter-peek { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px 24px; display:inline-flex; align-items:center; gap:10px; font-size:15px; font-weight:600; color:var(--primary); animation:slideUp 0.5s ease 0.3s both; }
+
+/* ===== ENHANCED FEEDBACK ===== */
+.feedback .fb-sub { font-size:12px; font-weight:400; opacity:0.7; margin-top:4px; }
+
+/* ===== DRAMATIC REVEAL ===== */
+.reveal-stage { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.reveal-stage.visible { opacity:1; transform:translateY(0); }
+.result-hero .result-emoji { font-size:64px; animation:revealBounce 0.8s ease 0.2s both; }
+.result-hero .result-type { animation:revealBounce 0.8s ease 0.5s both; }
+.gauge-wrap { animation:revealBounce 0.8s ease 0s both; }
+@keyframes revealBounce { 0%{opacity:0;transform:scale(0)} 60%{transform:scale(1.3)} 100%{opacity:1;transform:scale(1)} }
+
+/* ===== MODE SELECT ===== */
+.mode-cards { display:flex; flex-direction:column; gap:16px; max-width:420px; margin:0 auto; padding:0 20px; }
+.mode-card { background:var(--surface); border:2px solid var(--border); border-radius:20px; padding:24px; text-align:center; transition:all 0.2s; cursor:pointer; touch-action:manipulation; }
+.mode-card:active { transform:scale(0.97); }
+.mode-card.selected { border-color:var(--primary); background:var(--primary-light); }
+.mode-emoji { font-size:40px; margin-bottom:8px; }
+.mode-title { font-size:18px; font-weight:800; margin-bottom:4px; }
+.mode-desc { font-size:13px; color:var(--text-dim); line-height:1.5; }
+.mode-badge { display:inline-block; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px; margin-top:8px; }
+
+/* ===== NAME INPUT ===== */
+.name-screen-inner { max-width:420px; margin:0 auto; padding:60px 20px; text-align:center; }
+.name-input { width:100%; padding:16px 20px; border:2px solid var(--border); border-radius:16px; font-size:18px; font-weight:600; font-family:inherit; text-align:center; outline:none; transition:border-color 0.2s; background:var(--surface); }
+.name-input:focus { border-color:var(--primary); }
+.name-input::placeholder { color:var(--text-light); font-weight:400; }
+.name-submit { width:100%; padding:16px; border-radius:14px; background:linear-gradient(135deg,var(--primary),#8B5CF6); color:#fff; font-size:16px; font-weight:700; border:none; margin-top:16px; transition:opacity 0.2s; cursor:pointer; }
+.name-submit:disabled { opacity:0.3; cursor:not-allowed; }
+.family-count { display:flex; gap:10px; justify-content:center; margin-top:20px; }
+.family-count-btn { width:44px; height:44px; border-radius:12px; border:2px solid var(--border); background:var(--surface); font-size:18px; font-weight:700; cursor:pointer; transition:all 0.2s; }
+.family-count-btn.selected { border-color:var(--primary); background:var(--primary-light); color:var(--primary); }
+
+/* ===== FAMILY RESULT ===== */
+.family-result-hero { text-align:center; padding:40px 20px 20px; }
+.family-member-tabs { display:flex; gap:8px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+.family-tab { padding:8px 16px; border-radius:10px; border:1.5px solid var(--border); background:var(--surface); font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; }
+.family-tab.active { border-color:var(--primary); background:var(--primary-light); color:var(--primary); }
+.family-compare-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.family-compare-name { width:60px; font-size:11px; font-weight:600; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.family-compare-bar-wrap { flex:1; height:8px; background:#EDE9FE; border-radius:4px; overflow:hidden; }
+.family-compare-bar { height:100%; border-radius:4px; transition:width 1s ease; }
+.family-compare-val { width:36px; font-size:11px; font-weight:700; color:var(--primary); }
+.family-talk-card { background:linear-gradient(135deg,#FFF7ED,#FEF3C7); border:1px solid #FDE68A; border-radius:16px; padding:20px; margin:0 20px 16px; max-width:500px; margin-left:auto; margin-right:auto; }
+.family-talk-card h4 { font-size:14px; font-weight:700; margin-bottom:10px; }
+.family-talk-item { font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:8px; padding-left:16px; position:relative; }
+.family-talk-item::before { content:'💬'; position:absolute; left:0; }
+.family-type-card { display:flex; align-items:center; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin-bottom:8px; }
+.family-type-emoji { font-size:28px; }
+.family-type-info { flex:1; }
+.family-type-name { font-size:14px; font-weight:700; }
+.family-type-label { font-size:11px; color:var(--text-dim); }
+</style>
+</head>
+<body>
+
+<!-- ===== SCREEN 1: LANDING ===== -->
+<div class="screen active" id="landing">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">🌱 AI 시대 강점 발견</div>
+        <h1>AI와 함께 성장할<br>나의 강점을<br>발견하세요</h1>
+        <p>MBTI가 "지금의 나"라면, 이 검사는 "미래의 내가<br>어디서 빛날지"를 알려줍니다. 3분이면 충분합니다.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-val">6</div><div class="hero-stat-label">역량 차원</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">3분</div><div class="hero-stat-label">소요 시간</div></div>
+          <div class="hero-stat"><div class="hero-stat-val">무료</div><div class="hero-stat-label">비용</div></div>
+        </div>
+        <div class="hero-ctas">
+          <button class="hero-cta" id="heroStartBtn" aria-label="3분 무료 검사 시작">3분 무료로 시작하기</button>
+          <button class="hero-cta secondary" id="heroSampleBtn" aria-label="샘플 결과 미리보기">샘플 결과 보기</button>
+        </div>
+      </div>
+      <div class="hero-sample" aria-hidden="true">
+        <div class="hero-sample-card">
+          <div class="hero-sample-title">📊 샘플 결과 · 6역량 프로파일</div>
+          <div class="hero-sample-row"><span>🧩</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">구조적 사고</span><span class="sval">82</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:82%"></div></div></div></div>
+          <div class="hero-sample-row"><span>🎨</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">창의적 재설계</span><span class="sval">74</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:74%"></div></div></div></div>
+          <div class="hero-sample-row"><span>💫</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">감성 연결</span><span class="sval">68</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:68%"></div></div></div></div>
+          <div class="hero-sample-row"><span>⚡</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">적응 민첩성</span><span class="sval">79</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:79%"></div></div></div></div>
+          <div class="hero-sample-row"><span>⚖️</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">윤리적 판단</span><span class="sval">71</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:71%"></div></div></div></div>
+          <div class="hero-sample-row"><span>🤝</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;"><span class="sname">협업 지능</span><span class="sval">85</span></div><div class="hero-sample-bar"><div class="hero-sample-fill" style="width:85%"></div></div></div></div>
+          <div class="hero-sample-note">예시 · 김민수(35세, 기획자) · 평균 76점</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="section">
+    <div class="section-tag">WHY</div>
+    <div class="section-title">왜 이 검사가 필요한가요?</div>
+    <div class="section-desc">기존 검사는 "지금의 나"를 분류합니다.<br>이 검사는 "AI와 함께 성장할 나의 강점"을 찾습니다.</div>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-icon">🌱</div>
+        <div class="why-text">
+          <h4>AI 시대엔 사라지는 일만큼, 새로 생기는 일도 많습니다</h4>
+          <p>WEF Future of Jobs 2025에 따르면 2030년까지 1.7억 개 일자리가 새로 생기고, 9천만 개가 사라집니다. 중요한 건 "어떤 강점으로 전환할 것인가"입니다.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🧭</div>
+        <div class="why-text">
+          <h4>MBTI는 "지금", 이 검사는 "앞으로"</h4>
+          <p>성격은 잘 변하지 않지만, 시대가 요구하는 역량은 빠르게 변합니다. "나는 INTJ"라는 정보보다, "내가 AI 시대에 어디서 빛날지"가 더 유용합니다.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-text">
+          <h4>자기 보고가 아닌, 행동 기반</h4>
+          <p>"당신은 창의적입니까?"라고 묻지 않습니다. 상황을 제시하고 어떻게 반응하는지 관찰합니다. 자기 인식 편향 없이 강점과 성장 포인트를 드러냅니다.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👨‍👩‍👧‍👦</div>
+        <div class="why-text">
+          <h4>부모와 자녀가 함께 볼 수 있습니다</h4>
+          <p>같은 검사를 가족이 함께 하면, 서로의 사고방식 차이가 드러납니다. "왜 우리 아이는 이렇게 생각하지?"에 대한 구조적 답을 얻을 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT: 6 DIMENSIONS -->
+  <div class="section" style="background:var(--surface); padding-top:40px; padding-bottom:40px; max-width:100%;">
+    <div style="max-width:640px; margin:0 auto; padding:0 20px;">
+      <div class="section-tag">WHAT</div>
+      <div class="section-title">6가지 미래 핵심 역량</div>
+      <div class="section-desc">AI가 대체할 수 없는 인간 고유의 역량을<br>6차원으로 탐색합니다.</div>
+      <div class="dim-grid">
+        <div class="dim-card">
+          <div class="dim-emoji">🧩</div>
+          <div class="dim-name">구조적 사고</div>
+          <div class="dim-desc">복잡한 문제를 분해하고<br>패턴을 찾는 능력</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-emoji">🎨</div>
+          <div class="dim-name">창의적 재설계</div>
+          <div class="dim-desc">기존 틀을 깨고<br>새로운 해법을 만드는 능력</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-emoji">💫</div>
+          <div class="dim-name">감성 연결</div>
+          <div class="dim-desc">사람의 감정을 읽고<br>공감하는 능력</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-emoji">⚡</div>
+          <div class="dim-name">적응 민첩성</div>
+          <div class="dim-desc">변화에 빠르게 대응하고<br>학습하는 능력</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-emoji">⚖️</div>
+          <div class="dim-name">윤리적 판단</div>
+          <div class="dim-desc">가치와 원칙에 기반한<br>판단 능력</div>
+        </div>
+        <div class="dim-card">
+          <div class="dim-emoji">🤝</div>
+          <div class="dim-name">협업 지능</div>
+          <div class="dim-desc">다양한 사람과<br>시너지를 만드는 능력</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW: METHODS -->
+  <div class="section">
+    <div class="section-tag">HOW</div>
+    <div class="section-title">4가지 검사 방식</div>
+    <div class="section-desc">당신이 가장 편한 방식을 선택하세요.<br>선택 자체도 당신의 인지 스타일을 드러냅니다.</div>
+    <div class="method-cards">
+      <div class="method-card">
+        <div class="method-icon">📖</div>
+        <div class="method-info">
+          <h4>시나리오형</h4>
+          <p>현실적인 상황이 주어지고, 어떻게 행동할지 선택합니다</p>
+          <div class="method-tag">논리적 · 현실지향</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🎮</div>
+        <div class="method-info">
+          <h4>게임 비유형</h4>
+          <p>롤, 포트나이트, 마크 등 게임 상황으로 질문합니다</p>
+          <div class="method-tag">은유적 · 게임친화</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🖼️</div>
+        <div class="method-info">
+          <h4>이미지 선택형</h4>
+          <p>두 가지 상징 중 끌리는 것을 직관적으로 고릅니다</p>
+          <div class="method-tag">직관적 · 감각형</div>
+        </div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">📊</div>
+        <div class="method-info">
+          <h4>순위 매기기형</h4>
+          <p>가치와 행동의 우선순위를 드래그로 배열합니다</p>
+          <div class="method-tag">분석적 · 체계형</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="section" style="text-align:center;">
+    <div class="section-tag">TRUST</div>
+    <div class="section-title">검증된 프레임워크 · 균형 잡힌 관점</div>
+    <div class="section-desc" style="margin-bottom:20px;">
+      위협(Frey & Osborne), 기회(WEF 2025), 재훈련(OECD) 세 관점을<br>
+      통합해 설계했습니다. 단일 수치가 아닌 <strong>역량 지도</strong>로 안내합니다.
+    </div>
+    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;">
+      <span style="background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius:8px;">WEF 2025</span>
+      <span style="background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius:8px;">OECD</span>
+      <span style="background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius:8px;">O*NET</span>
+      <span style="background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius:8px;">McKinsey</span>
+      <span style="background:var(--primary-light); color:var(--primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius:8px;">EU AI Act</span>
+    </div>
+    <p style="font-size:11px; color:var(--text-light); max-width:420px; margin:0 auto; line-height:1.6;">
+      ※ 본 검사는 자기인식 탐색 도구이며, 임상·채용 평가용이 아닙니다. <a href="#methodology" style="color:var(--primary); font-weight:600;">점수 산출 방식 보기 →</a>
+    </p>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="cta-section">
+    <div style="font-size:36px; margin-bottom:12px;">🌱</div>
+    <div class="section-title" style="text-align:center;">당신의 강점, 3분이면 보입니다</div>
+    <p style="color:var(--text-dim); font-size:14px; margin-bottom:24px;">무료 · 로그인 불필요 · 결과 즉시 확인</p>
+    <button class="cta-btn" id="ctaStartBtn" aria-label="검사 시작하기">검사 시작하기</button>
+    <div class="cta-sub" style="margin-top:16px;">📱 모바일에서 더 편하게 · 🔒 개인정보 수집 없음</div>
+    <div class="cta-sub" id="honestCounter" style="margin-top:8px; font-size:12px; color:var(--text-light);">지금까지 <strong id="doneCountNum" style="color:var(--primary);">—</strong>명이 완료했습니다 <span style="opacity:0.6;">· 실측 집계</span></div>
+  </div>
+
+  <!-- ===== LEGAL / METHODOLOGY SECTION ===== -->
+  <section id="methodology" class="section" style="max-width:720px; margin-top:20px;">
+    <div class="section-tag">METHODOLOGY</div>
+    <div class="section-title" style="font-size:20px;">점수는 어떻게 계산되나요?</div>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:12px; box-shadow:var(--shadow);">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">📐 점수 산출 방식</summary>
+      <div style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">
+        <p><strong>1) 응답 → 가중치 매핑</strong><br>각 문항의 선택지는 6역량 중 1~2개에 가중치(−3~+3)로 연결됩니다. 예: "기한보다 품질을 우선" 선택 → 윤리적 판단 +2, 적응 민첩성 −1.</p>
+        <p style="margin-top:8px;"><strong>2) 누적 → 정규화</strong><br>선택된 응답의 역량별 가중치를 합산한 후, 0~100 스케일로 선형 정규화합니다.</p>
+        <p style="margin-top:8px;"><strong>3) 유형 분류</strong><br>6역량 분산·최고축·평균을 조합해 10개 아키타입 중 하나로 분류합니다(올라운더, 균형 전략가, 미래 설계자 등).</p>
+        <p style="margin-top:8px;"><strong>4) 한 줄 진단 / 7일 액션</strong><br>유형별 사전 정의 + 당신의 성장 포인트 #1, #2에 맞춤 액션 3개를 배치합니다. 동일 점수라도 유형이 다르면 액션이 다릅니다.</p>
+      </div>
+    </details>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">📚 참고 프레임워크</summary>
+      <ul style="font-size:13px; color:var(--text-dim); line-height:1.8; margin-top:10px; padding-left:18px;">
+        <li><strong>WEF Future of Jobs Report 2025</strong> — 2030년까지 1.7억 신규 일자리 / 9천만 소멸 전망. 성장 역량으로 분석적 사고·AI 리터러시·회복탄력성 제시.</li>
+        <li><strong>OECD Employment Outlook 2024</strong> — AI가 가장 많이 대체하는 영역(반복적 분석)과 보완하는 영역(대인·창의) 구분.</li>
+        <li><strong>Frey & Osborne (2013, Oxford Martin)</strong> — 자동화 위험 직업 47% 추정. 본 검사는 이 수치를 위협 프레임으로만 사용하지 않고 "보완 역량" 설계의 출발점으로 사용.</li>
+        <li><strong>Autor (2015) "Why Are There Still So Many Jobs?"</strong> — 자동화와 보완의 공존 이론.</li>
+        <li><strong>McKinsey Global Institute — The Age of AI (2023)</strong> — 활동 단위 자동화 분류(30% 이상 자동화 가능 활동이 대부분 직업에 존재).</li>
+        <li><strong>O*NET Content Model</strong> — 역량 분류의 국제 표준 구조 참고.</li>
+        <li><strong>EU AI Act (2024)</strong> — 고위험 AI 시스템 분류와 인간 감독 요건 → 윤리적 판단 축 설계.</li>
+      </ul>
+    </details>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">⚠️ 한계와 비진단 고지</summary>
+      <div style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">
+        <p><strong>스냅샷 검사입니다</strong> — 8문항 기반이라 개인 역량의 완전한 측정이 아닙니다. 기분·환경에 따라 ±10점 변동 가능.</p>
+        <p style="margin-top:8px;"><strong>타당도 검증 진행 중</strong> — 표준화 검사(O*NET Big 5 등)와의 상관 분석은 향후 업데이트 예정. 현재는 <em>탐색적 도구</em>로 포지셔닝합니다.</p>
+        <p style="margin-top:8px;"><strong>사용 금지 용도</strong> — 채용·자격·임상 진단·역량 비교 순위 매기기. 본 검사 결과를 이런 용도로 쓰면 잘못된 결론을 낳습니다.</p>
+        <p style="margin-top:8px;"><strong>권장 사용</strong> — 자기인식 출발점, 가족 간 대화 도구, 7일 행동 실험의 선택 기준. 전문 진로 상담의 <em>대체</em>가 아닌 <em>보완</em>으로.</p>
+      </div>
+    </details>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);" id="privacy">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">🔒 Privacy Policy (개인정보 처리방침)</summary>
+      <p style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">본 검사는 로그인 없이 진행됩니다. 응답은 점수 산출 목적으로만 사용되며, 별도 이메일 수집 시 본인 동의를 거칩니다. 수집된 이메일은 결과 발송 및 본 서비스 관련 공지에만 사용되며 제3자에게 제공되지 않습니다. 문의: futurebox69@gmail.com</p>
+    </details>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);" id="terms">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">📄 Terms of Use (이용약관)</summary>
+      <p style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">본 서비스는 무료로 제공되며, 결과는 자기인식 탐색 용도로만 사용됩니다. 결과를 채용·진단·자격 판별에 사용하는 것을 금합니다. 서비스 내용은 사전 고지 없이 변경될 수 있습니다.</p>
+    </details>
+    <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);" id="contact">
+      <summary style="font-size:14px; font-weight:700; cursor:pointer;">✉️ Contact (문의)</summary>
+      <p style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">운영: 미래교육연구원 · 손준희<br>이메일: <a href="mailto:futurebox69@gmail.com" style="color:var(--primary); font-weight:600;">futurebox69@gmail.com</a><br>연계 서비스: <a href="https://job-future-analyzer.vercel.app" style="color:var(--primary); font-weight:600;">내 직업의 미래 분석기</a></p>
+    </details>
+  </section>
+
+  <footer>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;">
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>© 2026 미래교육연구원 · BTS(Build Tomorrow Skills)</p>
+    <p style="margin-top:4px;">연계: <a href="https://job-future-analyzer.vercel.app">내 직업의 미래 분석기</a></p>
+  </footer>
+</div>
+
+<!-- ===== SCREEN: MODE SELECT ===== -->
+<div class="screen" id="modeScreen">
+  <div style="text-align:center; padding:60px 20px 30px;">
+    <div style="font-size:40px; margin-bottom:8px;">🎮</div>
+    <div class="section-title" style="font-size:24px;">어떻게 검사할까요?</div>
+    <div class="section-desc" style="font-size:14px;">혼자 해도, 가족과 함께 해도 재미있어요!</div>
+  </div>
+  <div class="mode-cards">
+    <div class="mode-card" id="modePersonal">
+      <div class="mode-emoji">🧑</div>
+      <div class="mode-title">개인 검사</div>
+      <div class="mode-desc">나만의 미래 역량을 탐색합니다</div>
+      <div class="mode-badge" style="background:var(--primary-light); color:var(--primary);">3분 · 8문항</div>
+    </div>
+    <div class="mode-card" id="modeFamily">
+      <div class="mode-emoji">👨‍👩‍👧‍👦</div>
+      <div class="mode-title">가족 검사</div>
+      <div class="mode-desc">가족이 순서대로 같은 검사를 하고<br>결과를 비교합니다</div>
+      <div class="mode-badge" style="background:rgba(78,205,196,0.15); color:#0D9488;">2~4명 · 각 3분</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN: NAME INPUT ===== -->
+<div class="screen" id="nameScreen">
+  <div class="name-screen-inner">
+    <div style="font-size:40px; margin-bottom:12px;" id="nameEmoji">🧑</div>
+    <div class="section-title" style="font-size:22px;" id="nameTitle">이름을 알려주세요</div>
+    <div class="section-desc" style="font-size:13px; margin-bottom:24px;" id="nameDesc">결과에 이름이 표시됩니다</div>
+    <input class="name-input" id="playerNameInput" placeholder="이름 입력" maxlength="10" autocomplete="off">
+    <div id="familyCountSection" style="display:none;">
+      <div style="font-size:13px; color:var(--text-dim); margin-top:20px; margin-bottom:8px;">가족 몇 명이 참여하나요?</div>
+      <div class="family-count" id="familyCountBtns"></div>
+    </div>
+    <button class="name-submit" id="nameSubmitBtn" disabled>시작하기 →</button>
+  </div>
+</div>
+
+<!-- ===== SCREEN 2: QTYPE SELECT ===== -->
+<div class="screen" id="qtypeScreen">
+  <div style="text-align:center; padding:40px 20px 20px;">
+    <div style="font-size:36px; margin-bottom:8px;">🎯</div>
+    <div class="section-title" style="font-size:22px;">검사 방식을 선택하세요</div>
+    <div class="section-desc" style="font-size:13px;">어떤 유형을 선택하느냐도 당신의 인지 스타일입니다</div>
+  </div>
+  <div style="max-width:420px; margin:0 auto; padding:12px 20px;">
+    <div class="method-cards" id="qtypeCards"></div>
+    <button class="skip-btn" id="skipFromQtype" style="position:static; margin-top:16px; width:100%; text-align:center;">건너뛰기</button>
+  </div>
+</div>
+
+<!-- ===== SCREEN 3: ASSESSMENT ===== -->
+<div class="screen" id="assessScreen">
+  <div class="assess-header">
+    <div class="assess-progress">
+      <span class="assess-count" id="roundLabel">1/8</span>
+      <div class="assess-bar"><div class="assess-fill" id="progressFill" style="width:12.5%"></div></div>
+      <span class="assess-timer" id="timerDisplay">30</span>
+    </div>
+  </div>
+  <button class="skip-btn" id="skipFromAssess">검사 끝내기</button>
+  <div class="assess-body" id="assessBody"></div>
+  <div class="feedback" id="feedback"></div>
+</div>
+
+<!-- ===== SCREEN 3.5: LOADING ===== -->
+<div class="screen" id="loadingScreen">
+  <div class="loading-center">
+    <div class="loading-emoji">🔬</div>
+    <div class="loading-title">역량을 분석하고 있습니다</div>
+    <div class="loading-bar-wrap"><div class="loading-bar-fill" id="loadingFill" style="width:0%"></div></div>
+    <div class="loading-status" id="loadingStatus"></div>
+  </div>
+</div>
+
+<!-- ===== SCREEN 4: RESULT ===== -->
+<div class="screen" id="resultScreen">
+  <!-- ① 종합 게이지 + 유형 -->
+  <div class="result-hero">
+    <div class="gauge-wrap">
+      <svg class="gauge-svg" viewBox="0 0 200 110">
+        <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100"/>
+        <path class="gauge-fill" id="gaugeFill" d="M 20 100 A 80 80 0 0 1 180 100"
+              stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+      </svg>
+      <div class="gauge-score" id="gaugeScore">0</div>
+    </div>
+    <div class="gauge-label">종합 미래역량 점수</div>
+    <div class="result-emoji" id="resEmoji"></div>
+    <div class="result-type" id="resType"></div>
+    <div class="result-sub" id="resSub"></div>
+  </div>
+
+  <!-- ① 한 줄 판결 -->
+  <div class="result-card">
+    <div class="result-card-title">📋 한 줄 판결</div>
+    <div id="verdictText" class="insight-text" style="font-weight:500; color:var(--text);"></div>
+  </div>
+
+  <!-- ② 6차원 바 차트 -->
+  <div class="result-card">
+    <div class="result-card-title">📊 6차원 역량 프로파일</div>
+    <div id="scoreRows"></div>
+  </div>
+
+  <!-- ③ 메타분석 -->
+  <div class="result-card">
+    <div class="result-card-title">💡 사고방식 메타분석</div>
+    <div id="metaInsight" class="insight-text"></div>
+  </div>
+
+  <!-- ③-B 강점 Top 2 & 성장 포인트 Top 2 -->
+  <div class="result-card" id="growthCard">
+    <div class="result-card-title">🌟 강점 2 · 성장 포인트 2</div>
+    <div id="strengthsList" style="margin-bottom:14px;"></div>
+    <div id="growthsList"></div>
+  </div>
+
+  <!-- ③-C 7일 액션 플랜 -->
+  <div class="result-card" id="actionCard">
+    <div class="result-card-title">🗓 7일 액션 플랜</div>
+    <p class="insight-text" style="margin-bottom:12px;">작게 시작해서, 감각부터 붙이세요.</p>
+    <ul id="actionList" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;"></ul>
+  </div>
+
+  <!-- ③-D 30일 재측정 안내 -->
+  <div class="result-card" id="remeasureCard" style="background:linear-gradient(135deg,#EDE9FE,#F5F3FF); border-color:transparent;">
+    <div class="result-card-title">🔁 30일 뒤 다시 해보세요</div>
+    <p class="insight-text" style="color:var(--text);">점수는 고정된 특성이 아니라 <strong style="color:var(--primary);">현재 스냅샷</strong>입니다. 7일 액션을 30일간 유지한 뒤 재측정하면 변화가 보입니다.</p>
+    <button id="remindBtn" style="margin-top:12px; padding:10px 18px; border-radius:10px; background:var(--primary); color:#fff; border:none; font-size:13px; font-weight:600; cursor:pointer;">📅 30일 후 캘린더에 추가</button>
+  </div>
+
+  <!-- ④ 공유 (Task 5에서 구현) -->
+  <div class="result-card" id="shareCard" style="display:none;"></div>
+
+  <!-- ⑤ BTS CTA (Task 6에서 구현) -->
+  <div class="bts-cta" id="btsCta" style="display:none;"></div>
+
+  <!-- ⑥ 블러 미리보기 (Task 7에서 구현) -->
+  <div class="result-card" id="blurCard" style="display:none;"></div>
+
+  <!-- ⑦ 면책 조항 -->
+  <footer>
+    <p class="disclaimer" style="font-size:11px; color:var(--text-light); line-height:1.6; max-width:500px; margin:0 auto 12px; padding:0 20px;">
+      본 검사는 자기인식 탐색 도구이며, 임상적 진단이나 채용 평가의 목적으로 사용될 수 없습니다.
+      결과는 참고 자료이며, 전문적 진로 상담을 대체하지 않습니다.
+      검증된 학술 프레임워크(Frey &amp; Osborne, O*NET, McKinsey, Autor, EU AI Act) 기반 설계.
+    </p>
+    <p style="font-size:12px; color:var(--text-light);">© 2026 LoginFuture Ministry. All rights reserved.</p>
+    <p style="font-size:12px; color:var(--text-light); margin-top:4px;">AI 시대의 커리어 내비게이션 — <a href="https://job-future-analyzer.vercel.app" style="color:var(--primary); text-decoration:none; font-weight:600;">BTS(Build Tomorrow Skills)</a></p>
+  </footer>
+</div>
+
+<!-- ===== SCREEN: FAMILY RESULT ===== -->
+<div class="screen" id="familyResultScreen">
+  <div class="family-result-hero">
+    <div style="font-size:48px; margin-bottom:8px;">👨‍👩‍👧‍👦</div>
+    <div class="section-title" style="font-size:22px;">우리 가족 역량 비교</div>
+    <div class="section-desc" style="font-size:13px;" id="familySummary"></div>
+  </div>
+
+  <div class="result-card" id="familyTypeCards">
+    <div class="result-card-title">👥 가족 구성원 유형</div>
+    <div id="familyTypeList"></div>
+  </div>
+
+  <div class="result-card" id="familyCompareCard">
+    <div class="result-card-title">📊 역량 비교</div>
+    <div id="familyCompareChart"></div>
+  </div>
+
+  <div class="family-talk-card" id="familyTalkCard">
+    <h4>🗣️ 가족 대화 주제</h4>
+    <div id="familyTalkList"></div>
+  </div>
+
+  <div class="result-card" id="familyShareCard" style="display:none;"></div>
+  <div class="bts-cta" id="familyBtsCta" style="display:none;"></div>
+
+  <footer>
+    <p class="disclaimer" style="font-size:11px; color:var(--text-light); line-height:1.6; max-width:500px; margin:0 auto 12px; padding:0 20px;">
+      본 검사는 자기인식 탐색 도구이며, 임상적 진단이나 채용 평가의 목적으로 사용될 수 없습니다.
+      결과는 참고 자료이며, 전문적 진로 상담을 대체하지 않습니다.
+    </p>
+    <p style="font-size:12px; color:var(--text-light);">© 2026 LoginFuture Ministry. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+// ===== SCENARIO DATA =====
+const SKILLS_INFO = {
+  structural:{icon:'🧩',name:'구조적 사고',color:'#6C63FF'},
+  creative:{icon:'🎨',name:'창의적 재설계',color:'#FF6B6B'},
+  emotional:{icon:'💫',name:'감성 연결',color:'#F472B6'},
+  adaptive:{icon:'⚡',name:'적응 민첩성',color:'#FFE66D'},
+  ethical:{icon:'⚖️',name:'윤리적 판단',color:'#A78BFA'},
+  collab:{icon:'🤝',name:'협업 지능',color:'#34D399'}
+};
+
+const ARCHETYPES = {
+  allrounder:   {emoji:'🌟', title:'올라운더',       sub:'모든 역량이 고르게 높은 만능형 인재', key:'allrounder'},
+  balanced:     {emoji:'🎯', title:'균형 전략가',    sub:'어떤 상황에서도 흔들리지 않는 안정형', key:'balanced'},
+  explosive:    {emoji:'🌋', title:'잠재력 폭발형',  sub:'극단적 강점을 가진 돌파형 인재', key:'explosive'},
+  dual_weapon:  {emoji:'⚔️', title:'이중 무기 보유자', sub:'두 가지 강점으로 시너지를 만드는 사람', key:'dual_weapon'},
+  architect:    {emoji:'🏗️', title:'미래 설계자',    sub:'복잡함 속에서 질서를 찾는 사람', key:'architect'},
+  disruptor:    {emoji:'🎨', title:'창조적 파괴자',   sub:'기존 틀을 깨고 새로운 길을 만드는 사람', key:'disruptor'},
+  empath:       {emoji:'💛', title:'공감 리더',      sub:'사람의 마음을 읽고 연결하는 사람', key:'empath'},
+  adapter:      {emoji:'⚡', title:'적응형 혁신가',   sub:'불확실성 속에서 기회를 잡는 사람', key:'adapter'},
+  guardian:     {emoji:'⚖️', title:'윤리 수호자',    sub:'원칙과 가치로 판단하는 사람', key:'guardian'},
+  synergist:    {emoji:'🤝', title:'시너지 메이커',   sub:'다양한 사람과 함께 함께 더 큰 것을 만드는 사람', key:'synergist'}
+};
+
+const BT_COMMENTS = {
+  0: {msg:'첫 번째 질문! 직감대로 골라보세요 🎯', emoji:'🤖'},
+  1: {msg:'흠, 흥미로운 선택이었어요. 다음은...', emoji:'🤔'},
+  2: {msg:'슬슬 패턴이 보이기 시작하네요!', emoji:'👀'},
+  3: {msg:'벌써 절반! 당신의 강점이 드러나고 있어요 💪', emoji:'🔥'},
+  4: {msg:'후반전 시작! 여기서 반전이 올 수도...', emoji:'⚡'},
+  5: {msg:'오, 이건 좀 어려운 질문이에요', emoji:'😮'},
+  6: {msg:'거의 다 왔어요! 마지막 힘내세요', emoji:'🏃'},
+  7: {msg:'마지막 질문! 이게 결과를 바꿀 수도 있어요', emoji:'🎲'}
+};
+
+const FB_SUBS = [
+  '이 선택이 당신을 정의합니다',
+  '흥미로운 관점이네요',
+  'AI는 이렇게 생각하지 못해요',
+  '당신만의 강점이 보여요',
+  '이 역량이 미래를 바꿉니다',
+  '독특한 시각이에요',
+  '이런 사람이 필요합니다',
+  '바로 이게 핵심이에요'
+];
+
+const TYPE_VERDICTS = {
+  allrounder:  '당신은 올라운더형 인재입니다. 모든 역량이 고르게 높아 어떤 환경에서든 빠르게 적응할 수 있습니다.',
+  balanced:    '당신은 균형 전략가입니다. 특정 역량에 치우치지 않는 안정감이 강점이며, 리더십 포지션에 적합합니다.',
+  explosive:   '당신은 잠재력 폭발형입니다. 극단적 강점이 있지만, 약한 영역을 보완하면 무서운 성장이 가능합니다.',
+  dual_weapon: '당신은 이중 무기 보유자입니다. 두 가지 핵심 역량의 조합이 독보적인 경쟁력을 만듭니다.',
+  architect:   '당신은 미래 설계자입니다. 복잡한 문제를 구조화하는 능력이 AI 시대 핵심 경쟁력입니다.',
+  disruptor:   '당신은 창조적 파괴자입니다. 기존 방식을 해체하고 재조립하는 능력은 AI가 대체하기 가장 어렵습니다.',
+  empath:      '당신은 공감 리더입니다. 사람의 감정을 읽고 신뢰를 만드는 능력은 AI 시대 최고의 무기입니다.',
+  adapter:     '당신은 적응형 혁신가입니다. 변화를 두려워하지 않고 빠르게 전환하는 능력이 강점입니다.',
+  guardian:    '당신은 윤리 수호자입니다. AI 시대에 기술의 방향을 판단하는 역할이 점점 더 중요해집니다.',
+  synergist:   '당신은 시너지 메이커입니다. 다양한 배경의 사람들과 협업해 더 큰 가치를 만드는 능력이 있습니다.'
+};
+
+const scenarioBanks = {
+  adult:[
+    {ctx:'직장 위기',emoji:'💼',text:'팀에서 AI 도구를 도입했는데, 동료가 "일자리가 위험하다"며 불안해합니다. 어떻게 하시겠습니까?',type:'scenario',
+      choices:[
+        {text:'"AI가 대체하는 업무 vs 우리만의 강점"을 정리해서 팀 미팅을 연다',skills:{structural:3,collab:1},fb:'구조로 불안을 해소'},
+        {text:'"이걸 기회로 새 역할을 만들자"며 AI+인간 협업 모델을 제안한다',skills:{creative:3,adaptive:1},fb:'위기를 기회로'},
+        {text:'동료의 감정을 먼저 들어주고, 함께 대응 방안을 찾자고 한다',skills:{emotional:3,collab:1},fb:'사람을 먼저 보는 리더'},
+        {text:'AI 도입의 윤리적 가이드라인을 먼저 만들자고 경영진에 건의한다',skills:{ethical:3,structural:1},fb:'원칙이 있는 대응'}]},
+    {ctx:'이직 고민',emoji:'🔄',text:'연봉 30% 인상 제안을 받았지만, 그 회사는 AI 자동화를 적극 추진 중입니다.',type:'scenario',
+      choices:[
+        {text:'6개월 치 데이터로 분석. 감이 아닌 숫자로 결정한다',skills:{structural:3,adaptive:1},fb:'데이터 기반 결정'},
+        {text:'"AI를 활용하는 포지션을 만들겠다"며 역제안한다',skills:{creative:3,adaptive:1},fb:'협상의 재설계'},
+        {text:'현 직장 동료들과의 관계, 문화 적합성을 먼저 고려한다',skills:{emotional:3,ethical:1},fb:'관계 중심 판단'},
+        {text:'두 회사 모두의 3년 후 시나리오를 그려보고 판단한다',skills:{adaptive:3,structural:1},fb:'미래 시뮬레이션'}]},
+    {ctx:'부업 기회',emoji:'💡',text:'퇴근 후 AI를 활용한 부업 기회가 생겼습니다. 하지만 본업과 시간 충돌이 있습니다.',type:'scenario',
+      choices:[
+        {text:'본업과 부업의 시너지 영역을 찾아 둘을 연결한다',skills:{structural:3,creative:1},fb:'구조적 통합'},
+        {text:'과감하게 본업을 줄이고 부업에 올인한다',skills:{adaptive:3,creative:1},fb:'변화에 뛰어들기'},
+        {text:'가족과 상의하고, 생활 패턴에 미치는 영향을 먼저 고려한다',skills:{emotional:3,ethical:1},fb:'삶의 균형 우선'},
+        {text:'3개월 시범 운영 후 데이터로 판단한다',skills:{structural:2,adaptive:2},fb:'실험적 접근'}]},
+    {ctx:'팀 갈등',emoji:'🤝',text:'프로젝트에서 두 팀원이 심하게 대립합니다. 당신이 중재해야 합니다.',type:'scenario',
+      choices:[
+        {text:'"왜 실패했는지 같이 봐보자" — 리플레이 분석을 제안',skills:{structural:3,collab:1},fb:'팀의 분석가'},
+        {text:'두 사람의 아이디어를 합쳐 제3의 안을 만든다',skills:{creative:3,collab:1},fb:'창의적 중재'},
+        {text:'각자의 감정을 먼저 들어준 뒤 공감대를 형성한다',skills:{emotional:3,collab:1},fb:'감정을 먼저'},
+        {text:'팀 규칙을 세우고, 역할을 명확히 재분배한다',skills:{ethical:3,structural:1},fb:'규칙으로 신뢰를'}]}
+  ],
+  youth:[
+    {ctx:'LoL 팀 위기',emoji:'🎮',text:'랭크 게임에서 탑이 0/5가 되었습니다. 팀 분위기가 최악입니다.',type:'scenario',
+      choices:[
+        {text:'"탑은 스플릿 포기하고 팀파이트에 집중해" — 전략 수정 제안',skills:{structural:3,adaptive:1},fb:'전략적 사고'},
+        {text:'"괜찮아, 후반 가면 우리 한타 구성이 더 좋아" — 멘탈 케어',skills:{emotional:3,collab:1},fb:'팀의 정신적 지주'},
+        {text:'자신의 라인에서 초반 이득을 극대화해서 캐리를 시도한다',skills:{adaptive:3,creative:1},fb:'개인기로 돌파'},
+        {text:'"서렌 투표 올려" — 빠른 손절 후 다음 판에 집중',skills:{adaptive:2,structural:2},fb:'효율적 판단'}]},
+    {ctx:'마크 건축',emoji:'⛏️',text:'마인크래프트에서 친구들과 마을을 만들고 있습니다. 의견이 달라서 진행이 안 됩니다.',type:'scenario',
+      choices:[
+        {text:'구역을 나눠서 각자 맡은 부분을 만든 뒤 합친다',skills:{structural:3,collab:1},fb:'분업의 힘'},
+        {text:'모두의 아이디어를 합쳐서 전혀 새로운 건축 테마를 만든다',skills:{creative:3,collab:1},fb:'창의적 융합'},
+        {text:'"다 좋은데, 일단 네 아이디어부터 해보자" — 한 명씩 시도',skills:{emotional:3,adaptive:1},fb:'존중하며 전진'},
+        {text:'투표로 결정한다. 민주적이고 공정하게',skills:{ethical:3,structural:1},fb:'공정한 프로세스'}]},
+    {ctx:'포트나이트 스쿼드',emoji:'🔫',text:'포트나이트에서 스쿼드 중 한 명이 계속 혼자 돌아다니다 죽습니다.',type:'scenario',
+      choices:[
+        {text:'지형 분석 → 고지대 확보 → 하나씩 유인해서 각개격파 전략 제안',skills:{structural:3,adaptive:1},fb:'전략적 사고'},
+        {text:'그 친구 플레이 스타일에 맞는 역할을 새로 만들어준다',skills:{creative:3,emotional:1},fb:'맞춤형 해법'},
+        {text:'"같이 다니자, 네가 죽으면 우리가 슬퍼" — 감성 호소',skills:{emotional:3,collab:1},fb:'팀워크는 감정에서'},
+        {text:'역할 분담을 정하고 규칙을 만든다 (스카우트/서포트/공격)',skills:{structural:2,collab:2},fb:'시스템으로 해결'}]},
+    {ctx:'로블록스 사업',emoji:'🏗️',text:'로블록스에서 게임을 만들었는데 접속자가 점점 줄고 있습니다.',type:'scenario',
+      choices:[
+        {text:'접속 데이터를 분석해서 이탈 구간을 찾아 개선한다',skills:{structural:3,adaptive:1},fb:'데이터 기반 개선'},
+        {text:'다른 인기 게임을 분석하고, 완전히 다른 컨셉으로 리뉴얼',skills:{creative:3,structural:1},fb:'벤치마킹의 힘'},
+        {text:'플레이어들에게 직접 물어본다. "뭐가 재미없어?"',skills:{emotional:3,collab:1},fb:'유저의 목소리'},
+        {text:'수익화보다 커뮤니티를 먼저 만든다. 팬이 있으면 게임은 산다',skills:{collab:3,emotional:1},fb:'관계가 먼저'}]}
+  ],
+  image:[
+    {ctx:'상징 선택',emoji:'🔮',text:'두 가지 중 더 끌리는 것을 고르세요.',type:'image',
+      choices:[
+        {emoji:'🗺️',label:'지도',desc:'전체를 보고 길을 찾는다',skills:{structural:3,adaptive:1}},
+        {emoji:'🧭',label:'나침반',desc:'방향만 알면 길은 만든다',skills:{creative:3,adaptive:1}}]},
+    {ctx:'도구 선택',emoji:'🛠️',text:'하나만 가져갈 수 있다면?',type:'image',
+      choices:[
+        {emoji:'🔬',label:'현미경',desc:'깊이 파고들어 진실을 본다',skills:{structural:3,ethical:1}},
+        {emoji:'🔭',label:'망원경',desc:'멀리 보고 큰 그림을 그린다',skills:{creative:3,adaptive:1}}]},
+    {ctx:'길 선택',emoji:'🛤️',text:'어떤 길로 가시겠습니까?',type:'image',
+      choices:[
+        {emoji:'🏔️',label:'산길',desc:'어렵지만 정상에서 전부 보인다',skills:{adaptive:3,structural:1}},
+        {emoji:'🌊',label:'바닷길',desc:'흐름을 타면 더 멀리 간다',skills:{creative:2,emotional:2}}]},
+    {ctx:'팀 역할',emoji:'👥',text:'팀에서 당신의 자연스러운 역할은?',type:'image',
+      choices:[
+        {emoji:'🎯',label:'전략가',desc:'방향을 정하고 계획을 세운다',skills:{structural:3,ethical:1}},
+        {emoji:'🔥',label:'점화자',desc:'에너지를 불어넣고 사기를 올린다',skills:{emotional:3,collab:1}}]}
+  ],
+  rank:[
+    {ctx:'가치 순위',emoji:'⚖️',text:'AI 시대에 가장 중요한 순서로 배열하세요.',type:'rank',
+      items:['비판적 사고','감성 지능','기술 적응력','윤리적 판단','창의성','협업 능력'],
+      skillMap:['structural','emotional','adaptive','ethical','creative','collab']},
+    {ctx:'행동 순위',emoji:'🎯',text:'새 프로젝트 시작 시, 먼저 하는 순서대로.',type:'rank',
+      items:['사람들 의견 듣기','데이터 분석하기','일단 시작하기','계획 세우기','기존 사례 조사','목표 재정의'],
+      skillMap:['collab','structural','adaptive','structural','creative','ethical']}
+  ]
+};
+
+function buildScenarios(qtype){
+  const main = scenarioBanks.adult;
+  switch(qtype){
+    case 'scenario': return [...main.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,2)];
+    case 'game': return [...scenarioBanks.youth.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,1),...main.slice(0,1)];
+    case 'image': return [...scenarioBanks.image,...main.slice(0,2),...scenarioBanks.rank.slice(0,2)];
+    case 'rank': return [...scenarioBanks.rank,...scenarioBanks.image,...main.slice(0,2)];
+    default: return [...main.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,2)];
+  }
+}
+
+// ===== STATE =====
+let currentScreen = 'landing';
+let selectedQType = 'scenario';
+let scenarios = [];
+let round = 0;
+let scores = {structural:0,creative:0,emotional:0,adaptive:0,ethical:0,collab:0};
+let behaviorData = [];
+let timerInterval = null;
+let timeLeft = 30;
+let roundStartTime = 0;
+let competencyResult = null;
+let gameMode = 'personal'; // 'personal' | 'family'
+let familySize = 2;
+let familyMembers = []; // [{name, scores, normScores, typeKey, avgScore, ...}]
+let currentFamilyIdx = 0;
+let playerName = '';
+let comboCount = 0;
+let lastAnswerTime = 0;
+
+function spawnParticles(x, y) {
+  const container = document.getElementById('particleContainer');
+  const emojis = ['✨','🌟','💫','⚡','🔥','💥','🎯','🚀'];
+  for (let i = 0; i < 6; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = (x + (Math.random() - 0.5) * 80) + 'px';
+    p.style.top = y + 'px';
+    p.style.animationDuration = (0.6 + Math.random() * 0.6) + 's';
+    container.appendChild(p);
+    setTimeout(() => p.remove(), 1200);
+  }
+}
+
+function checkCombo() {
+  const now = Date.now();
+  if (now - lastAnswerTime < 4000 && lastAnswerTime > 0) {
+    comboCount++;
+    if (comboCount >= 2) {
+      const badge = document.getElementById('comboBadge');
+      badge.textContent = `🔥 ${comboCount}콤보!`;
+      badge.classList.remove('show');
+      void badge.offsetWidth; // reflow
+      badge.classList.add('show');
+      setTimeout(() => badge.classList.remove('show'), 1500);
+    }
+  } else {
+    comboCount = 1;
+  }
+  lastAnswerTime = now;
+}
+
+// ===== SCREEN MANAGEMENT =====
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  currentScreen = id;
+}
+
+// ===== LANDING EVENTS =====
+document.getElementById('heroStartBtn').addEventListener('click',()=>{window.bt?.track?.('hero_cta_click');showScreen('modeScreen');});
+document.getElementById('heroStartBtn').addEventListener('touchend',e=>{e.preventDefault();window.bt?.track?.('hero_cta_click');showScreen('modeScreen')});
+document.getElementById('ctaStartBtn').addEventListener('click',()=>{window.bt?.track?.('final_cta_click');showScreen('modeScreen');});
+document.getElementById('ctaStartBtn').addEventListener('touchend',e=>{e.preventDefault();window.bt?.track?.('final_cta_click');showScreen('modeScreen')});
+
+// === 실측 카운터 fetch (랜딩 노출 시 1회) ===
+(function loadHonestCount(){
+  const el = document.getElementById('doneCountNum');
+  if(!el) return;
+  fetch('/api/count?key=done').then(r=>r.json()).then(d=>{
+    if (d && typeof d.count === 'number') {
+      el.textContent = d.count.toLocaleString('ko-KR');
+    } else {
+      el.parentElement.style.display = 'none'; // env vars 미설정 시 숨김
+    }
+  }).catch(()=>{ el.parentElement.style.display = 'none'; });
+})();
+// 샘플 결과 보기 — 모바일에서는 히어로 샘플이 숨어있으므로 간단 모달로 표시
+document.getElementById('heroSampleBtn')?.addEventListener('click',()=>{
+  window.bt?.track?.('sample_modal_open');
+  const existing = document.getElementById('sampleModal');
+  if (existing) { existing.remove(); return; }
+  const m = document.createElement('div');
+  m.id = 'sampleModal';
+  m.style.cssText = 'position:fixed;inset:0;background:rgba(30,27,75,0.75);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);';
+  m.innerHTML = `
+    <div style="background:#fff;border-radius:20px;max-width:420px;width:100%;padding:24px;max-height:85vh;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div style="font-size:15px;font-weight:800;color:var(--text);">📊 샘플 결과 미리보기</div>
+        <button id="sampleClose" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-dim);">×</button>
+      </div>
+      <div style="font-size:13px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">예시: <strong>김민수(35세, 기획자)</strong>의 결과입니다. 실제 결과는 당신의 응답에 따라 달라집니다.</div>
+      ${[['🧩','구조적 사고',82],['🎨','창의적 재설계',74],['💫','감성 연결',68],['⚡','적응 민첩성',79],['⚖️','윤리적 판단',71],['🤝','협업 지능',85]].map(([e,n,v])=>`<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="font-size:18px;">${e}</span><div style="flex:1;"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span style="font-weight:500;">${n}</span><span style="font-weight:700;color:var(--primary);">${v}</span></div><div style="height:6px;background:#EDE9FE;border-radius:3px;overflow:hidden;"><div style="height:100%;width:${v}%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:3px;"></div></div></div></div>`).join('')}
+      <div style="margin-top:16px;padding:12px;background:var(--primary-light);border-radius:10px;font-size:12px;line-height:1.6;color:var(--text);"><strong>🌟 강점:</strong> 협업 지능, 구조적 사고<br><strong>🌱 성장 포인트:</strong> 감성 연결, 윤리적 판단<br><strong>📋 한 줄 진단:</strong> "체계로 조직을 움직이는 설계자 유형"</div>
+      <button id="sampleStart" style="margin-top:16px;width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--primary),#8B5CF6);color:#fff;font-weight:700;border:none;font-size:14px;cursor:pointer;">나의 결과 바로 보기 →</button>
+    </div>`;
+  document.body.appendChild(m);
+  m.addEventListener('click',ev=>{if(ev.target===m)m.remove();});
+  document.getElementById('sampleClose').addEventListener('click',()=>m.remove());
+  document.getElementById('sampleStart').addEventListener('click',()=>{window.bt?.track?.('sample_modal_cta_click');m.remove();showScreen('modeScreen');});
+});
+
+// ===== MODE SCREEN =====
+document.getElementById('modePersonal').addEventListener('click', () => {
+  window.bt?.track?.('mode_select',{mode:'personal'});
+  gameMode = 'personal';
+  familyMembers = [];
+  currentFamilyIdx = 0;
+  document.getElementById('nameEmoji').textContent = '🧑';
+  document.getElementById('nameTitle').textContent = '이름을 알려주세요';
+  document.getElementById('nameDesc').textContent = '결과에 이름이 표시됩니다';
+  document.getElementById('familyCountSection').style.display = 'none';
+  document.getElementById('playerNameInput').value = '';
+  document.getElementById('playerNameInput').placeholder = '이름 입력';
+  document.getElementById('nameSubmitBtn').disabled = true;
+  showScreen('nameScreen');
+  document.getElementById('playerNameInput').focus();
+});
+
+document.getElementById('modeFamily').addEventListener('click', () => {
+  window.bt?.track?.('mode_select',{mode:'family'});
+  gameMode = 'family';
+  familyMembers = [];
+  currentFamilyIdx = 0;
+  document.getElementById('nameEmoji').textContent = '👨‍👩‍👧‍👦';
+  document.getElementById('nameTitle').textContent = '가족 검사 설정';
+  document.getElementById('nameDesc').textContent = '첫 번째 가족 구성원의 이름을 입력하세요';
+  document.getElementById('familyCountSection').style.display = 'block';
+  document.getElementById('playerNameInput').value = '';
+  document.getElementById('playerNameInput').placeholder = '첫 번째 가족 이름';
+  document.getElementById('nameSubmitBtn').disabled = true;
+
+  // 가족 수 버튼 생성
+  const countContainer = document.getElementById('familyCountBtns');
+  countContainer.innerHTML = '';
+  [2,3,4].forEach(n => {
+    const btn = document.createElement('button');
+    btn.className = 'family-count-btn' + (n === 2 ? ' selected' : '');
+    btn.textContent = n;
+    btn.addEventListener('click', () => {
+      familySize = n;
+      countContainer.querySelectorAll('.family-count-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+    countContainer.appendChild(btn);
+  });
+
+  showScreen('nameScreen');
+  document.getElementById('playerNameInput').focus();
+});
+
+// 이름 입력 활성화
+document.getElementById('playerNameInput').addEventListener('input', (e) => {
+  document.getElementById('nameSubmitBtn').disabled = e.target.value.trim().length === 0;
+});
+document.getElementById('playerNameInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.value.trim().length > 0) {
+    document.getElementById('nameSubmitBtn').click();
+  }
+});
+
+// 이름 확인 → 다음 화면
+document.getElementById('nameSubmitBtn').addEventListener('click', () => {
+  playerName = document.getElementById('playerNameInput').value.trim();
+  if (!playerName) return;
+  showScreen('qtypeScreen');
+});
+
+// ===== QTYPE SCREEN =====
+const qtypeData = [
+  {type:'scenario',icon:'📖',title:'시나리오형',desc:'현실적인 상황 선택',tag:'논리적'},
+  {type:'game',icon:'🎮',title:'게임 비유형',desc:'게임 상황으로 질문',tag:'게임친화'},
+  {type:'image',icon:'🖼️',title:'이미지 선택형',desc:'직관적으로 선택',tag:'직관적'},
+  {type:'rank',icon:'📊',title:'순위 매기기형',desc:'우선순위 배열',tag:'분석적'}
+];
+const qtypeContainer = document.getElementById('qtypeCards');
+qtypeData.forEach(q=>{
+  const card = document.createElement('div');
+  card.className = 'method-card';
+  card.innerHTML = `<div class="method-icon">${q.icon}</div><div class="method-info"><h4>${q.title}</h4><p>${q.desc}</p><div class="method-tag">${q.tag}</div></div>`;
+  card.addEventListener('click',()=>startAssessment(q.type));
+  card.addEventListener('touchend',e=>{e.preventDefault();startAssessment(q.type)});
+  qtypeContainer.appendChild(card);
+});
+document.getElementById('skipFromQtype').addEventListener('click',()=>startAssessment('scenario'));
+
+// ===== ASSESSMENT =====
+function startAssessment(qtype){
+  selectedQType = qtype;
+  scenarios = buildScenarios(qtype);
+  round = 0;
+  window._intermissionShown = false;
+  comboCount = 0;
+  lastAnswerTime = 0;
+  scores = {structural:0,creative:0,emotional:0,adaptive:0,ethical:0,collab:0};
+  behaviorData = [];
+  showScreen('assessScreen');
+  loadRound();
+}
+
+function loadRound(){
+  if(round >= scenarios.length){ finishAssessment(); return; }
+
+  // 중간 인터미션 (4문항 후)
+  if (round === 4 && !window._intermissionShown) {
+    window._intermissionShown = true;
+    const body = document.getElementById('assessBody');
+    body.classList.remove('fade-out');
+    body.innerHTML = '';
+
+    // 중간 점수 계산
+    const midNorm = normalizeScores(scores);
+    const midSorted = Object.entries(midNorm).sort((a,b) => b[1] - a[1]);
+    const topSkill = SKILLS_INFO[midSorted[0][0]];
+
+    body.innerHTML = `<div class="intermission">
+      <div class="inter-emoji">📊</div>
+      <div class="inter-title">전반전 분석 완료!</div>
+      <div class="inter-sub">4문항 동안 당신의 선택을 분석했어요.<br>현재 가장 강한 역량은...</div>
+      <div class="inter-peek">${topSkill.icon} ${topSkill.name}</div>
+      <div class="inter-sub" style="margin-top:16px; font-size:13px;">후반전에서 뒤집힐 수 있을까요? 🤔</div>
+    </div>`;
+
+    setTimeout(() => {
+      loadRound();
+    }, 2500);
+    return;
+  }
+
+  const body = document.getElementById('assessBody');
+  const delay = round === 0 ? 0 : 300;
+  if (delay > 0) body.classList.add('fade-out');
+
+  setTimeout(() => {
+    const s = scenarios[round];
+    const total = scenarios.length;
+    document.getElementById('roundLabel').textContent = `${round+1}/${total}`;
+    document.getElementById('progressFill').style.width = `${(round+1)/total*100}%`;
+    timeLeft = 30;
+    roundStartTime = Date.now();
+    const timerEl = document.getElementById('timerDisplay');
+    timerEl.textContent = timeLeft;
+    timerEl.classList.remove('warning');
+    clearInterval(timerInterval);
+    timerInterval = setInterval(()=>{
+      timeLeft--;
+      timerEl.textContent = timeLeft;
+      if(timeLeft <= 5) timerEl.classList.add('warning');
+      if(timeLeft <= 0){
+        clearInterval(timerInterval);
+        behaviorData.push({round,type:s.type,time:Date.now()-roundStartTime,skipped:true});
+        showFeedback('⏰ 시간 초과');
+        setTimeout(()=>{ round++; loadRound(); },1200);
+      }
+    },1000);
+
+    body.innerHTML = '';
+
+    if(s.type === 'scenario'){
+      renderTextChoices(s, body);
+    } else if(s.type === 'image'){
+      renderImageChoices(s, body);
+    } else if(s.type === 'rank'){
+      renderRankChoices(s, body);
+    }
+
+    // 캐릭터 가이드
+    const comment = BT_COMMENTS[round] || BT_COMMENTS[0];
+    const guide = document.createElement('div');
+    guide.className = 'bt-guide';
+    guide.innerHTML = `<div class="bt-avatar">${comment.emoji}</div><div class="bt-msg">${comment.msg}</div>`;
+    body.insertBefore(guide, body.firstChild);
+
+    body.classList.remove('fade-out');
+    // 진행 배경색 변화
+    const bgColors = ['#F8F7FF','#F5F3FF','#F0ECFF','#EBE5FF','#E6DEFF','#E0D6FF','#DBD0FF','#D5C9FF'];
+    document.body.style.background = bgColors[Math.min(round, bgColors.length - 1)];
+  }, 300);
+}
+
+function renderTextChoices(s, container){
+  const keys = ['A','B','C','D'];
+  let html = `<div class="assess-context">${s.ctx}</div><div class="assess-emoji">${s.emoji}</div><div class="assess-question">${s.text}</div><div class="assess-choices">`;
+  s.choices.forEach((c,i)=>{
+    html += `<div class="assess-choice" data-idx="${i}"><div class="assess-key">${keys[i]}</div><div class="assess-choice-text">${c.text}</div></div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  container.querySelectorAll('.assess-choice').forEach(el=>{
+    el.addEventListener('click',()=>selectChoice(parseInt(el.dataset.idx),s));
+    el.addEventListener('touchend',e=>{e.preventDefault();selectChoice(parseInt(el.dataset.idx),s)});
+  });
+}
+
+function renderImageChoices(s, container){
+  let html = `<div class="assess-context">${s.ctx}</div><div class="assess-emoji">${s.emoji}</div><div class="assess-question">${s.text}</div><div class="assess-image-grid">`;
+  s.choices.forEach((c,i)=>{
+    html += `<div class="assess-image-card" data-idx="${i}"><div class="emoji">${c.emoji}</div><div class="label">${c.label}</div><div class="desc">${c.desc}</div></div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  container.querySelectorAll('.assess-image-card').forEach(el=>{
+    el.addEventListener('click',()=>selectChoice(parseInt(el.dataset.idx),s));
+    el.addEventListener('touchend',e=>{e.preventDefault();selectChoice(parseInt(el.dataset.idx),s)});
+  });
+}
+
+function renderRankChoices(s, container){
+  let html = `<div class="assess-context">${s.ctx}</div><div class="assess-emoji">${s.emoji}</div><div class="assess-question">${s.text}</div><div class="rank-list" id="rankList">`;
+  const shuffled = [...s.items].sort(()=>Math.random()-0.5);
+  shuffled.forEach((item,i)=>{
+    html += `<div class="rank-item" draggable="true" data-item="${item}"><div class="rank-num">${i+1}</div><div class="rank-text">${item}</div><div class="rank-handle">⠿</div></div>`;
+  });
+  html += '</div><button class="rank-confirm" id="rankConfirmBtn">이 순서로 확정</button>';
+  container.innerHTML = html;
+
+  const list = document.getElementById('rankList');
+  enableDragReorder(list);
+
+  document.getElementById('rankConfirmBtn').addEventListener('click',()=>submitRank(s));
+  document.getElementById('rankConfirmBtn').addEventListener('touchend',e=>{e.preventDefault();submitRank(s)});
+}
+
+function enableDragReorder(list){
+  let dragEl = null;
+  list.addEventListener('dragstart',e=>{dragEl=e.target.closest('.rank-item');if(dragEl)dragEl.classList.add('dragging')});
+  list.addEventListener('dragend',()=>{if(dragEl)dragEl.classList.remove('dragging');dragEl=null;updateRankNums(list)});
+  list.addEventListener('dragover',e=>{e.preventDefault();if(!dragEl)return;const after=getDragAfter(list,e.clientY);if(after){list.insertBefore(dragEl,after)}else{list.appendChild(dragEl)}});
+  let touchStartY=0;
+  list.addEventListener('touchstart',e=>{const item=e.target.closest('.rank-item');if(!item)return;dragEl=item;dragEl.classList.add('dragging');touchStartY=e.touches[0].clientY},{passive:true});
+  list.addEventListener('touchmove',e=>{if(!dragEl)return;e.preventDefault();const y=e.touches[0].clientY;const after=getDragAfter(list,y);if(after){list.insertBefore(dragEl,after)}else{list.appendChild(dragEl)}},{passive:false});
+  list.addEventListener('touchend',()=>{if(dragEl){dragEl.classList.remove('dragging');updateRankNums(list);dragEl=null}});
+}
+function getDragAfter(list,y){
+  const els=[...list.querySelectorAll('.rank-item:not(.dragging)')];
+  return els.reduce((closest,child)=>{const box=child.getBoundingClientRect();const offset=y-box.top-box.height/2;if(offset<0&&offset>closest.offset)return{offset,element:child};return closest},{offset:Number.NEGATIVE_INFINITY}).element;
+}
+function updateRankNums(list){list.querySelectorAll('.rank-num').forEach((n,i)=>n.textContent=i+1)}
+
+function submitRank(s){
+  clearInterval(timerInterval);
+  const items = [...document.querySelectorAll('#rankList .rank-item')].map(r=>r.dataset.item);
+  items.forEach((item,i)=>{
+    const idx = s.items.indexOf(item);
+    const skillKey = s.skillMap[idx];
+    const pts = Math.max(s.items.length - i, 0);
+    if(skillKey && scores.hasOwnProperty(skillKey)) scores[skillKey] += pts;
+  });
+  behaviorData.push({round,type:'rank',time:Date.now()-roundStartTime,order:items});
+  spawnParticles(window.innerWidth / 2, 400);
+  checkCombo();
+  showFeedback('순위 기록 완료!');
+  setTimeout(()=>{ round++; loadRound(); },800);
+}
+
+function selectChoice(idx, s){
+  clearInterval(timerInterval);
+  const c = s.choices[idx];
+  for(const[k,v] of Object.entries(c.skills)){
+    if(scores.hasOwnProperty(k)) scores[k] += v;
+  }
+  behaviorData.push({round,type:s.type,choiceIdx:idx,time:Date.now()-roundStartTime});
+
+  // highlight
+  document.querySelectorAll('.assess-choice,.assess-image-card').forEach((el,i)=>{
+    if(parseInt(el.dataset.idx)===idx) el.classList.add('selected');
+    el.style.pointerEvents='none';
+  });
+
+  // 파티클 + 콤보
+  const choiceEl = document.querySelector('.assess-choice.selected, .assess-image-card.selected');
+  if (choiceEl) {
+    const rect = choiceEl.getBoundingClientRect();
+    spawnParticles(rect.left + rect.width / 2, rect.top);
+  }
+  checkCombo();
+
+  const fb = c.fb || c.label || '선택 완료';
+  showFeedback(fb);
+  setTimeout(()=>{ round++; loadRound(); },900);
+}
+
+function showFeedback(text){
+  const el = document.getElementById('feedback');
+  const sub = FB_SUBS[Math.floor(Math.random() * FB_SUBS.length)];
+  el.innerHTML = `${text}<div class="fb-sub">${sub}</div>`;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),1000);
+}
+
+document.getElementById('skipFromAssess').addEventListener('click',finishAssessment);
+
+// ===== TYPE CLASSIFICATION =====
+const THEORETICAL_MAX = {
+  structural:12, creative:10, emotional:10,
+  adaptive:10, ethical:9, collab:9
+};
+
+function normalizeScores(rawScores) {
+  const normalized = {};
+  for (const [k, v] of Object.entries(rawScores)) {
+    normalized[k] = Math.min(100, Math.round(v / THEORETICAL_MAX[k] * 100));
+  }
+  return normalized;
+}
+
+function classifyType(normScores) {
+  const vals = Object.values(normScores);
+  const max = Math.max(...vals);
+  const min = Math.min(...vals);
+  const avg = Math.round(vals.reduce((a,b) => a+b, 0) / vals.length);
+  const range = max - min;
+  const sorted = Object.entries(normScores).sort((a,b) => b[1] - a[1]);
+  const topKey = sorted[0][0];
+  const top2diff = sorted[0][1] - sorted[1][1];
+
+  if (avg >= 75 && min >= 60) return 'allrounder';
+  if (range <= 10) return 'balanced';
+  if (min <= 40 && max >= 90) return 'explosive';
+  if (top2diff <= 5) return 'dual_weapon';
+
+  const dimensionMap = {
+    structural:'architect', creative:'disruptor', emotional:'empath',
+    adaptive:'adapter', ethical:'guardian', collab:'synergist'
+  };
+  return dimensionMap[topKey] || 'balanced';
+}
+
+// ===== FINISH & RESULT =====
+function finishAssessment(){
+  clearInterval(timerInterval);
+  showLoading(() => renderResult());
+}
+
+function showLoading(callback) {
+  showScreen('loadingScreen');
+  const fill = document.getElementById('loadingFill');
+  const status = document.getElementById('loadingStatus');
+  const messages = ['6차원 역량 교차 분석 중...', '유형 패턴 매칭 중...', '맞춤 인사이트 생성 중...'];
+  let progress = 0;
+  let msgIdx = 0;
+  status.textContent = messages[0];
+
+  const interval = setInterval(() => {
+    progress += Math.random() * 15 + 5;
+    if (progress > 95) progress = 95;
+    fill.style.width = progress + '%';
+    msgIdx++;
+    if (msgIdx < messages.length) status.textContent = messages[msgIdx];
+  }, 600);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    fill.style.width = '100%';
+    status.textContent = '완료!';
+    setTimeout(callback, 300);
+  }, 2000);
+}
+
+function animateGauge(score) {
+  const fill = document.getElementById('gaugeFill');
+  const scoreEl = document.getElementById('gaugeScore');
+  const totalLength = 251.2; // 반원 둘레 (Math.PI * 80)
+
+  // 카운트업 애니메이션
+  let current = 0;
+  const duration = 1500;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    current = Math.round(score * eased);
+    scoreEl.textContent = current;
+    fill.style.strokeDashoffset = totalLength * (1 - (score * eased) / 100);
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function showToast(text) {
+  const toast = document.getElementById('shareToast');
+  toast.textContent = text;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function getShareText() {
+  const r = competencyResult;
+  const arch = ARCHETYPES[r.typeKey];
+  return `AI 시대 미래역량 검사 결과: 나는 ${arch.emoji}${arch.title}! 종합 점수 ${r.avgScore}점.\n당신의 미래 역량은?\n→ ${location.href}`;
+}
+
+function setupShareButtons() {
+  document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+    const text = getShareText();
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    document.getElementById('copyLinkBtn').classList.add('copied');
+    document.getElementById('copyLinkBtn').textContent = '✅ 복사됨!';
+    showToast('결과가 클립보드에 복사되었습니다!');
+    setTimeout(() => {
+      document.getElementById('copyLinkBtn').classList.remove('copied');
+      document.getElementById('copyLinkBtn').innerHTML = '📋 링크 복사';
+    }, 2000);
+  });
+
+  document.getElementById('shareXBtn').addEventListener('click', () => {
+    const text = getShareText();
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'width=550,height=420');
+  });
+}
+
+function renderResult(){
+  document.body.style.background = '';
+  const normScores = normalizeScores(scores);
+  const typeKey = classifyType(normScores);
+  const arch = ARCHETYPES[typeKey];
+  const verdict = TYPE_VERDICTS[typeKey];
+  const avgScore = Math.round(Object.values(normScores).reduce((a,b)=>a+b,0) / 6);
+  const sortedScores = Object.entries(normScores).sort((a,b)=>b[1]-a[1]);
+  const topKey = sortedScores[0][0];
+  const avgTime = behaviorData.length > 0
+    ? behaviorData.reduce((s,d)=>s+d.time,0)/behaviorData.length/1000 : 10;
+  const qtypeMap = {scenario:'논리적 · 현실지향',game:'은유적 · 게임친화',
+    image:'직관적 · 감각형',rank:'분석적 · 체계형'};
+
+  competencyResult = {
+    rawScores: scores,
+    scores: normScores,
+    typeKey,
+    topKey,
+    archetype: arch.title,
+    avgScore,
+    verdict,
+    avgTime,
+    qtype: selectedQType,
+    qtypeMeaning: qtypeMap[selectedQType]
+  };
+
+  showScreen('resultScreen');
+  window.bt?.track?.('result_view',{type:typeKey,avg:avgScore});
+  // 실측 카운터 증가 (세션당 1회)
+  if (!sessionStorage.getItem('bts_counted')) {
+    sessionStorage.setItem('bts_counted','1');
+    fetch('/api/count?key=done',{method:'POST'}).catch(()=>{});
+  }
+
+  // 결과 카드들을 순차 공개
+  const revealCards = document.querySelectorAll('#resultScreen .result-card, #resultScreen .bts-cta, #resultScreen footer');
+  revealCards.forEach(card => card.classList.add('reveal-stage'));
+
+  setTimeout(() => {
+    revealCards.forEach((card, i) => {
+      setTimeout(() => card.classList.add('visible'), i * 400);
+    });
+  }, 800);
+
+  // 게이지
+  animateGauge(competencyResult.avgScore);
+
+  // 유형
+  document.getElementById('resEmoji').textContent = arch.emoji;
+  document.getElementById('resType').textContent = arch.title;
+  // 이름 표시
+  if (playerName) {
+    document.getElementById('resType').textContent = `${playerName}님은 ${arch.title}`;
+  }
+  document.getElementById('resSub').textContent = arch.sub;
+
+  // 한 줄 판결
+  document.getElementById('verdictText').textContent = verdict;
+
+  // 6차원 바 차트 (강점/성장 배지 포함)
+  const rowsEl = document.getElementById('scoreRows');
+  rowsEl.innerHTML = '';
+  sortedScores.forEach(([k, v], i) => {
+    const s = SKILLS_INFO[k];
+    const badge = i < 2 ? '<span class="strength-badge">강점</span>'
+      : (i === sortedScores.length - 1 ? '<span class="growth-badge">성장 포인트</span>' : '');
+    rowsEl.innerHTML += `<div class="score-row">
+      <div class="score-icon">${s.icon}</div>
+      <div class="score-info">
+        <div class="score-label"><span class="score-name">${s.name}${badge}</span><span class="score-val">${v}%</span></div>
+        <div class="score-bar"><div class="score-fill" style="width:0%;background:${s.color}"></div></div>
+      </div>
+    </div>`;
+  });
+
+  // 바 차트 순차 애니메이션 (0.2초 stagger)
+  setTimeout(() => {
+    document.querySelectorAll('.score-fill').forEach((el, i) => {
+      setTimeout(() => {
+        el.style.width = el.closest('.score-row').querySelector('.score-val').textContent;
+      }, i * 200);
+    });
+  }, 300);
+
+  // 공유 영역
+  const shareCard = document.getElementById('shareCard');
+  shareCard.style.display = 'block';
+  shareCard.innerHTML = `
+    <div class="result-card-title">📤 결과 공유하기</div>
+    <div class="share-wrap">
+      <button class="share-btn" id="copyLinkBtn">📋 링크 복사</button>
+      <button class="share-btn" id="shareXBtn">𝕏 공유</button>
+    </div>
+  `;
+
+  // BTS CTA
+  const btsCta = document.getElementById('btsCta');
+  btsCta.style.display = 'block';
+  btsCta.innerHTML = `
+    <h3>🔮 내 직업의 AI 대체율도 분석하기</h3>
+    <p>당신의 역량을 특정 직업과 교차 분석하면<br>더 구체적인 전환 전략이 나옵니다</p>
+    <button class="bts-btn" id="btsCTABtn">BTS에서 심층 분석 받기 →</button>
+    <div class="bts-features">
+      <span class="bts-feat">AI 대체율 분석</span>
+      <span class="bts-feat">10년 예측</span>
+      <span class="bts-feat">전환 경로</span>
+      <span class="bts-feat">스킬 로드맵</span>
+    </div>
+  `;
+
+  // Base64 토큰 생성
+  const KEY_MAP = {structural:'st',creative:'cr',emotional:'ec',adaptive:'aa',ethical:'ej',collab:'ci'};
+  const shortScores = {};
+  for (const [k,v] of Object.entries(competencyResult.scores)) {
+    shortScores[KEY_MAP[k]] = v;
+  }
+  const token = btoa(JSON.stringify({
+    s: shortScores,
+    type: competencyResult.typeKey,
+    t: Date.now()
+  }));
+  const btsUrl = `https://job-future-analyzer.vercel.app?competency=${token}`;
+
+  document.getElementById('btsCTABtn').addEventListener('click', () => {
+    window.open(btsUrl, '_blank');
+  });
+
+  // 블러 미리보기 + 이메일
+  const GOOGLE_FORM_URL = ''; // Google Form 생성 후 URL 입력
+  const GOOGLE_FORM_EMAIL_FIELD = 'entry.0000000'; // 실제 entry ID로 교체
+  const GOOGLE_FORM_TYPE_FIELD = 'entry.0000001';  // 실제 entry ID로 교체
+
+  const blurCard = document.getElementById('blurCard');
+  blurCard.style.display = 'block';
+  blurCard.innerHTML = `
+    <div class="result-card-title">🔒 결정 리포트 미리보기</div>
+    <div class="blur-preview">
+      <p>📌 전환 경로 Top 3<br>1. 데이터 분석 전문가 (적합도 92%)<br>2. UX 리서처 (적합도 87%)<br>3. AI 트레이너 (적합도 83%)</p>
+      <p>📋 90일 실행 계획<br>1~30일: 기초 역량 강화 프로그램<br>31~60일: 실전 프로젝트 참여<br>61~90일: 포트폴리오 완성 + 네트워킹</p>
+    </div>
+    <div style="text-align:center; margin-bottom:12px;">
+      <span style="font-size:14px; font-weight:600; color:var(--text);">📩 출시되면 알려드릴게요</span>
+    </div>
+    <div class="email-form">
+      <input type="email" class="email-input" id="emailInput" placeholder="이메일을 입력하세요">
+      <div class="consent-row">
+        <input type="checkbox" id="consentCheck">
+        <label for="consentCheck">마케팅 정보 수신에 동의합니다</label>
+      </div>
+      <button class="email-submit" id="emailSubmitBtn" disabled>알림 신청하기</button>
+      <div class="email-note">※ 이메일은 출시 알림 목적으로만 사용되며, 언제든 해지 가능합니다</div>
+    </div>
+  `;
+
+  // 동의 체크 시 버튼 활성화
+  document.getElementById('consentCheck').addEventListener('change', (e) => {
+    document.getElementById('emailSubmitBtn').disabled = !e.target.checked;
+  });
+
+  // 이메일 제출
+  document.getElementById('emailSubmitBtn').addEventListener('click', () => {
+    const email = document.getElementById('emailInput').value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('올바른 이메일을 입력해주세요');
+      return;
+    }
+
+    if (GOOGLE_FORM_URL) {
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.name = 'emailFrame';
+      document.body.appendChild(iframe);
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GOOGLE_FORM_URL;
+      form.target = 'emailFrame';
+
+      const emailField = document.createElement('input');
+      emailField.name = GOOGLE_FORM_EMAIL_FIELD;
+      emailField.value = email;
+      form.appendChild(emailField);
+
+      const typeField = document.createElement('input');
+      typeField.name = GOOGLE_FORM_TYPE_FIELD;
+      typeField.value = competencyResult.archetype;
+      form.appendChild(typeField);
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+      setTimeout(() => document.body.removeChild(iframe), 3000);
+    }
+
+    // UI 피드백
+    document.getElementById('emailSubmitBtn').textContent = '✅ 신청 완료!';
+    document.getElementById('emailSubmitBtn').disabled = true;
+    document.getElementById('emailInput').disabled = true;
+    document.getElementById('consentCheck').disabled = true;
+    showToast('신청 완료! 출시되면 알려드릴게요 📩');
+  });
+
+  // Meta insight
+  const fastRounds = behaviorData.filter(d=>d.time<5000).length;
+  const style = fastRounds > behaviorData.length/2 ? '빠른 직관형 의사결정자' : '신중한 숙고형 의사결정자';
+  document.getElementById('metaInsight').innerHTML =
+    `선택한 검사 유형: <span class="insight-highlight">${qtypeMap[selectedQType]}</span><br>`+
+    `→ 당신은 ${selectedQType==='scenario'?'현실의 맥락에서 논리적으로 판단하는':selectedQType==='game'?'게임적 사고로 전략을 세우는':selectedQType==='image'?'직관과 감각으로 빠르게 판단하는':'체계적으로 분석하고 정리하는'} 유형입니다.<br><br>`+
+    `평균 응답시간: <span class="insight-highlight">${avgTime.toFixed(1)}초</span><br>`+
+    `→ ${style}`;
+
+  // === 강점 2 · 성장 포인트 2 ===
+  const top2 = sortedScores.slice(0,2);
+  const bottom2 = sortedScores.slice(-2).reverse();
+  const strEl = document.getElementById('strengthsList');
+  const grwEl = document.getElementById('growthsList');
+  if (strEl && grwEl) {
+    strEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px;">🌟 강점</div>' +
+      top2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${v}점</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">이 축은 AI와 경쟁하지 말고 <strong>레버리지</strong>로 쓰세요.</div></div></div>`;}).join('');
+    grwEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:8px;">🌱 성장 포인트</div>' +
+      bottom2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${v}점</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">작은 루틴으로 <strong>7일 안에</strong> 감각을 붙일 수 있습니다.</div></div></div>`;}).join('');
+  }
+
+  // === 7일 액션 플랜 (역량별 6개 풀 · 유형+점수 시드로 선택) ===
+  const ACTION_POOL = {
+    structural: [
+      '하루 업무를 3단계(수집→판단→실행)로 포스트잇에 분해',
+      '문제 하나를 "왜→무엇→어떻게" 3층 구조로 정리',
+      '뉴스 기사 1개를 읽고 전제/근거/결론 3줄로 분리',
+      '회의 중 논의를 2×2 매트릭스로 요약 시도',
+      '주간 목표를 "결과 / 행동 / 지표" 3칸으로 재작성',
+      '의사결정 1건을 "선택지 3·기준 3" 표로 판단'
+    ],
+    creative: [
+      '같은 문제에 대한 해법 3가지를 억지로 만들어보기',
+      '싫어하는 분야의 책·영상 15분 보기',
+      '"만약 ~이 반대라면?" 역전 질문으로 하루 마감',
+      '무관해 보이는 두 단어를 연결하는 문장 5개 쓰기',
+      '익숙한 도구를 의도적으로 이상하게 써보기',
+      '일상 물건 1개에 새로운 용도 3개를 부여'
+    ],
+    emotional: [
+      '대화 중 상대의 감정 단어를 한 번 따라말하기',
+      '오늘 마주친 사람 1명의 표정·어조를 기록',
+      '나의 하루 감정을 3개 단어로 저녁에 요약',
+      '가까운 사람에게 "요즘 어때?" 후 15초 더 들어주기',
+      '불쾌했던 순간의 숨은 욕구를 한 문장으로 적기',
+      '감사 문자 1통을 구체적 장면 포함해 전송'
+    ],
+    adaptive: [
+      '익숙한 경로 대신 다른 길로 출근/이동',
+      '새 앱·도구 1개를 10분만 써보기',
+      '계획이 틀어졌을 때 "플랜 B"를 5분 안에 작성',
+      '오늘 생긴 변화 3개를 기록하고 대응 1개 실행',
+      '처음 해보는 작업을 15분 타이머로 시도',
+      '실패한 일 1개의 다음 버전을 내일 일정에 넣기'
+    ],
+    ethical: [
+      '오늘 결정 1개의 영향받는 사람 3명을 적기',
+      '"단기 이득 vs 장기 가치" 표를 그려 비교',
+      '뉴스 윤리 이슈 1개에 나의 판단 근거 쓰기',
+      '규칙을 어긴 순간을 하나 고르고 그 이유 분석',
+      '의사결정 1건을 "누가 손해 보는가" 관점으로 재검토',
+      '신뢰를 높일 작은 약속 1개를 하고 지키기'
+    ],
+    collab: [
+      '회의 중 다른 사람 의견을 한 번 요약해 확인',
+      '동료 1명에게 구체적 피드백(근거+개선) 전달',
+      '나와 다른 배경의 사람과 커피챗 15분',
+      '팀 채팅에서 질문 1개를 공개적으로 하기',
+      '내 결정의 이유를 팀원 1명에게 설명',
+      '감정이 상한 대화 1건을 복기해 다음 문장 준비'
+    ]
+  };
+  // 유형 + 점수 기반 시드 (동일인 재측정 시 결과 살짝 변화)
+  function seedPick(arr, seed){
+    if(!arr || !arr.length) return '';
+    return arr[Math.abs(seed|0) % arr.length];
+  }
+  const actEl = document.getElementById('actionList');
+  if (actEl) {
+    const weakKey = bottom2[0][0];
+    const weakKey2 = bottom2[1][0];
+    const strongKey = top2[0][0];
+    const seedBase = (avgScore * 13) + (bottom2[0][1] * 7) + (typeKey ? typeKey.length : 0);
+    const picks = [
+      seedPick(ACTION_POOL[weakKey]||ACTION_POOL.structural, seedBase),
+      seedPick(ACTION_POOL[weakKey2]||ACTION_POOL.structural, seedBase + 3),
+      seedPick(ACTION_POOL[strongKey]||ACTION_POOL.structural, seedBase + 5)
+    ];
+    const labels = [
+      {day:'Day 1', tag:'성장 포인트 #1'},
+      {day:'Day 3', tag:'성장 포인트 #2'},
+      {day:'Day 7', tag:'강점 레버리지'}
+    ];
+    actEl.innerHTML = picks.map((p,i)=>`<li style="display:flex;align-items:flex-start;gap:12px;padding:12px;background:var(--primary-light);border-radius:10px;"><div style="display:flex;flex-direction:column;align-items:center;min-width:48px;"><span style="font-weight:800;color:var(--primary);font-size:13px;">${labels[i].day}</span><span style="font-size:9px;color:var(--text-dim);margin-top:2px;">${labels[i].tag}</span></div><span style="font-size:13px;line-height:1.6;flex:1;">${p}</span></li>`).join('');
+  }
+
+  // === 30일 재측정 캘린더 버튼 ===
+  const remindBtn = document.getElementById('remindBtn');
+  if (remindBtn && !remindBtn.dataset.bound) {
+    remindBtn.dataset.bound = '1';
+    remindBtn.addEventListener('click', ()=>{
+      const d = new Date(); d.setDate(d.getDate()+30);
+      const dtstart = d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+      const dEnd = new Date(d.getTime()+30*60000).toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+      const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${dtstart}\nDTEND:${dEnd}\nSUMMARY:BTS 미래역량 재측정\nDESCRIPTION:30일 뒤 다시 측정해 변화를 확인하세요. https://bts-assessment.vercel.app\nEND:VEVENT\nEND:VCALENDAR`;
+      const blob = new Blob([ics],{type:'text/calendar'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href=url; a.download='bts-remeasure.ics'; a.click();
+      URL.revokeObjectURL(url);
+      window.bt?.track?.('ics_download');
+      remindBtn.textContent = '✓ 캘린더 파일 다운로드됨';
+      remindBtn.style.background = 'var(--accent)';
+    });
+  }
+
+  setupShareButtons();
+
+  // 가족 모드: 현재 구성원 결과 저장 + 다음 사람 or 비교 결과
+  if (gameMode === 'family') {
+    familyMembers.push({
+      name: playerName,
+      scores: {...scores},
+      normScores: {...normScores},
+      typeKey,
+      archetype: arch.title,
+      archetypeEmoji: arch.emoji,
+      avgScore
+    });
+
+    currentFamilyIdx++;
+
+    if (currentFamilyIdx < familySize) {
+      // 다음 가족 구성원
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'name-submit';
+      nextBtn.style.cssText = 'max-width:500px; margin:20px auto; display:block;';
+      nextBtn.textContent = `다음 가족 (${currentFamilyIdx + 1}/${familySize}) →`;
+      nextBtn.addEventListener('click', () => {
+        document.getElementById('nameEmoji').textContent = ['🧑','👧','👦','👴','👵'][currentFamilyIdx] || '🧑';
+        document.getElementById('nameTitle').textContent = `${currentFamilyIdx + 1}번째 가족`;
+        document.getElementById('nameDesc').textContent = '이름을 입력하고 같은 검사를 진행합니다';
+        document.getElementById('playerNameInput').value = '';
+        document.getElementById('playerNameInput').placeholder = `${currentFamilyIdx + 1}번째 가족 이름`;
+        document.getElementById('nameSubmitBtn').disabled = true;
+        document.getElementById('familyCountSection').style.display = 'none';
+        showScreen('nameScreen');
+        document.getElementById('playerNameInput').focus();
+      });
+      const blurCardEl = document.getElementById('blurCard');
+      if (blurCardEl) blurCardEl.parentNode.insertBefore(nextBtn, blurCardEl);
+
+      // 가족 모드에서는 블러/이메일 숨기기 (마지막에만 표시)
+      if (blurCardEl) blurCardEl.style.display = 'none';
+    } else {
+      // 모든 가족 완료 → 비교 결과
+      setTimeout(() => renderFamilyResult(), 500);
+    }
+  }
+}
+
+function renderFamilyResult() {
+  showScreen('familyResultScreen');
+
+  document.getElementById('familySummary').textContent =
+    `${familyMembers.map(m=>m.name).join(', ')} — ${familyMembers.length}명의 가족 역량을 비교합니다`;
+
+  // 유형 카드
+  const typeList = document.getElementById('familyTypeList');
+  typeList.innerHTML = '';
+  familyMembers.forEach(m => {
+    typeList.innerHTML += `<div class="family-type-card">
+      <div class="family-type-emoji">${m.archetypeEmoji}</div>
+      <div class="family-type-info">
+        <div class="family-type-name">${m.name}</div>
+        <div class="family-type-label">${m.archetype} · 종합 ${m.avgScore}점</div>
+      </div>
+    </div>`;
+  });
+
+  // 6차원 비교 차트
+  const chart = document.getElementById('familyCompareChart');
+  chart.innerHTML = '';
+  const dimKeys = ['structural','creative','emotional','adaptive','ethical','collab'];
+  const colors = ['#6C63FF','#FF6B6B','#4ECDC4','#FFE66D','#A78BFA','#34D399'];
+
+  dimKeys.forEach(dk => {
+    const skill = SKILLS_INFO[dk];
+    chart.innerHTML += `<div style="margin-bottom:14px;">
+      <div style="font-size:12px; font-weight:600; margin-bottom:6px;">${skill.icon} ${skill.name}</div>
+      ${familyMembers.map((m, i) => `<div class="family-compare-row">
+        <div class="family-compare-name">${m.name}</div>
+        <div class="family-compare-bar-wrap">
+          <div class="family-compare-bar" style="width:0%;background:${colors[i % colors.length]}" data-target="${m.normScores[dk]}"></div>
+        </div>
+        <div class="family-compare-val">${m.normScores[dk]}%</div>
+      </div>`).join('')}
+    </div>`;
+  });
+
+  // 바 애니메이션
+  setTimeout(() => {
+    chart.querySelectorAll('.family-compare-bar').forEach(bar => {
+      bar.style.width = bar.dataset.target + '%';
+    });
+  }, 300);
+
+  // 가족 대화 주제
+  const talkList = document.getElementById('familyTalkList');
+  talkList.innerHTML = '';
+
+  let maxDiff = 0, maxDiffDim = 'structural';
+  dimKeys.forEach(dk => {
+    const vals = familyMembers.map(m => m.normScores[dk]);
+    const diff = Math.max(...vals) - Math.min(...vals);
+    if (diff > maxDiff) { maxDiff = diff; maxDiffDim = dk; }
+  });
+
+  const diffSkill = SKILLS_INFO[maxDiffDim];
+  const highest = familyMembers.reduce((a,b) => a.normScores[maxDiffDim] > b.normScores[maxDiffDim] ? a : b);
+  const lowest = familyMembers.reduce((a,b) => a.normScores[maxDiffDim] < b.normScores[maxDiffDim] ? a : b);
+
+  talkList.innerHTML += `<div class="family-talk-item">"${diffSkill.name}"에서 ${highest.name}(${highest.normScores[maxDiffDim]}%)과 ${lowest.name}(${lowest.normScores[maxDiffDim]}%)의 차이가 가장 커요. 서로의 관점을 이야기해 보세요.</div>`;
+
+  const types = [...new Set(familyMembers.map(m=>m.typeKey))];
+  if (types.length > 1) {
+    talkList.innerHTML += `<div class="family-talk-item">가족 안에 ${types.length}가지 다른 유형이 있어요! 다양성이 가족의 힘입니다.</div>`;
+  } else {
+    talkList.innerHTML += `<div class="family-talk-item">가족 모두 같은 유형(${familyMembers[0].archetype})이에요! 비슷한 강점을 가진 가족이네요.</div>`;
+  }
+
+  talkList.innerHTML += `<div class="family-talk-item">"AI 시대에 우리 가족이 가장 잘 할 수 있는 일은 뭘까?" 함께 이야기해 보세요.</div>`;
+
+  // 공유 버튼
+  const shareCard = document.getElementById('familyShareCard');
+  shareCard.style.display = 'block';
+  shareCard.innerHTML = `
+    <div class="result-card-title">📤 가족 결과 공유하기</div>
+    <div class="share-wrap">
+      <button class="share-btn" id="familyCopyBtn">📋 링크 복사</button>
+      <button class="share-btn" id="familyShareXBtn">𝕏 공유</button>
+    </div>
+  `;
+
+  document.getElementById('familyCopyBtn').addEventListener('click', async () => {
+    const text = `우리 가족 미래역량 검사 결과!\n${familyMembers.map(m=>`${m.name}: ${m.archetypeEmoji}${m.archetype} (${m.avgScore}점)`).join('\n')}\n→ ${location.href}`;
+    try { await navigator.clipboard.writeText(text); } catch {
+      const ta = document.createElement('textarea'); ta.value = text;
+      document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+    }
+    showToast('가족 결과가 복사되었습니다!');
+  });
+
+  document.getElementById('familyShareXBtn').addEventListener('click', () => {
+    const text = `우리 가족 미래역량 검사 결과! ${familyMembers.map(m=>`${m.name}=${m.archetypeEmoji}`).join(' ')}\n→ ${location.href}`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank', 'width=550,height=420');
+  });
+
+  // BTS CTA
+  const btsCta = document.getElementById('familyBtsCta');
+  btsCta.style.display = 'block';
+  btsCta.innerHTML = `
+    <h3>🔮 가족의 직업 미래도 분석하기</h3>
+    <p>각자의 역량을 직업과 교차 분석하면<br>더 구체적인 전환 전략이 나옵니다</p>
+    <button class="bts-btn" onclick="window.open('https://job-future-analyzer.vercel.app','_blank')">BTS에서 심층 분석 받기 →</button>
+  `;
+}
+
+</script>
+<div class="share-toast" id="shareToast"></div>
+<div class="particle-container" id="particleContainer"></div>
+<div class="combo-badge" id="comboBadge"></div>
+</body>
+</html>
