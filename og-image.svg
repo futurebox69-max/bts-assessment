@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.08)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- decorative circles -->
+  <circle cx="1050" cy="100" r="180" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="100" cy="550" r="140" fill="rgba(255,255,255,0.06)"/>
+  <!-- left content -->
+  <g font-family="'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif" fill="#fff">
+    <rect x="70" y="90" width="220" height="44" rx="22" fill="rgba(255,255,255,0.2)"/>
+    <text x="180" y="120" font-size="20" font-weight="700" text-anchor="middle">🌱 미래역량 검사</text>
+    <text x="70" y="220" font-size="62" font-weight="900">AI와 함께 성장할</text>
+    <text x="70" y="300" font-size="62" font-weight="900">나의 강점,</text>
+    <text x="70" y="380" font-size="62" font-weight="900">3분이면 보입니다</text>
+    <text x="70" y="450" font-size="26" font-weight="500" opacity="0.9">6가지 미래 핵심 역량 · 무료 · 로그인 불필요</text>
+    <!-- stats row -->
+    <g transform="translate(70, 500)">
+      <text x="0" y="30" font-size="22" font-weight="700" opacity="0.95">6 역량</text>
+      <text x="0" y="55" font-size="13" opacity="0.7">탐색 차원</text>
+      <text x="140" y="30" font-size="22" font-weight="700" opacity="0.95">3분</text>
+      <text x="140" y="55" font-size="13" opacity="0.7">소요 시간</text>
+      <text x="240" y="30" font-size="22" font-weight="700" opacity="0.95">8문항</text>
+      <text x="240" y="55" font-size="13" opacity="0.7">행동 기반</text>
+      <text x="360" y="30" font-size="22" font-weight="700" opacity="0.95">무료</text>
+      <text x="360" y="55" font-size="13" opacity="0.7">비용</text>
+    </g>
+  </g>
+  <!-- right sample card -->
+  <g transform="translate(760, 140)">
+    <rect x="0" y="0" width="380" height="350" rx="24" fill="url(#card)" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+    <text x="24" y="42" font-family="'Noto Sans KR', sans-serif" font-size="13" font-weight="700" fill="#fff" opacity="0.85" letter-spacing="1">📊 SAMPLE · 6역량 프로파일</text>
+    <g font-family="'Noto Sans KR', sans-serif" fill="#fff" font-size="14">
+      <g transform="translate(24,75)"><text y="12">🧩 구조적 사고</text><text x="332" y="12" text-anchor="end" font-weight="700">82</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="272" height="5" rx="2.5" fill="#fff"/></g>
+      <g transform="translate(24,115)"><text y="12">🎨 창의적 재설계</text><text x="332" y="12" text-anchor="end" font-weight="700">74</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="246" height="5" rx="2.5" fill="#fff"/></g>
+      <g transform="translate(24,155)"><text y="12">💫 감성 연결</text><text x="332" y="12" text-anchor="end" font-weight="700">68</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="226" height="5" rx="2.5" fill="#fff"/></g>
+      <g transform="translate(24,195)"><text y="12">⚡ 적응 민첩성</text><text x="332" y="12" text-anchor="end" font-weight="700">79</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="262" height="5" rx="2.5" fill="#fff"/></g>
+      <g transform="translate(24,235)"><text y="12">⚖️ 윤리적 판단</text><text x="332" y="12" text-anchor="end" font-weight="700">71</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="236" height="5" rx="2.5" fill="#fff"/></g>
+      <g transform="translate(24,275)"><text y="12">🤝 협업 지능</text><text x="332" y="12" text-anchor="end" font-weight="700">85</text><rect x="0" y="22" width="332" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="0" y="22" width="282" height="5" rx="2.5" fill="#fff"/></g>
+    </g>
+    <text x="190" y="325" font-family="'Noto Sans KR', sans-serif" font-size="11" fill="#fff" opacity="0.7" text-anchor="middle">예시 · 평균 76점</text>
+  </g>
+  <!-- footer -->
+  <text x="70" y="595" font-family="'Noto Sans KR', sans-serif" font-size="18" font-weight="700" fill="#fff" opacity="0.9">bts-assessment.vercel.app</text>
+  <text x="1130" y="595" font-family="'Noto Sans KR', sans-serif" font-size="14" fill="#fff" opacity="0.6" text-anchor="end">BTS · Build Tomorrow Skills</text>
+</svg>

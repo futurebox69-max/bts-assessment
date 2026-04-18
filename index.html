@@ -13,6 +13,9 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:url" content="https://bts-assessment.vercel.app">
 <meta name="twitter:card" content="summary_large_image">
+<!-- 폰트 연결 조기 설정 (LCP 개선) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 <!-- Track helper (safe no-op when analytics isn't loaded) -->
@@ -25,9 +28,14 @@ window.bt.track = function(name, data){
   } catch(e){}
 };
 </script>
-<!-- <meta property="og:image" content="https://bts-assessment.vercel.app/og-image.png"> -->
+<meta property="og:image" content="https://bts-assessment.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI와 함께 성장할 나의 강점을 찾는 BTS 미래역량 검사">
+<meta name="twitter:image" content="https://bts-assessment.vercel.app/og-image.png">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+/* 폰트: 3 weight만 로드 (400 기본, 700 강조, 900 타이틀) — 기존 6 weight → 50% 축소 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
 :root {
   --bg: #F8F7FF;
   --surface: #fff;
@@ -1414,14 +1422,25 @@ function showToast(text) {
   setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
+function getShareHashtags() {
+  const r = competencyResult;
+  const arch = ARCHETYPES[r.typeKey];
+  const topSkill = SKILLS_INFO[r.topKey];
+  // 띄어쓰기 제거 (해시태그 규약)
+  const typeTag = arch.title.replace(/\s+/g,'');
+  const skillTag = topSkill.name.replace(/\s+/g,'');
+  return ['#BTS미래역량검사','#'+typeTag,'#'+skillTag,'#AI시대역량'];
+}
 function getShareText() {
   const r = competencyResult;
   const arch = ARCHETYPES[r.typeKey];
-  return `AI 시대 미래역량 검사 결과: 나는 ${arch.emoji}${arch.title}! 종합 점수 ${r.avgScore}점.\n당신의 미래 역량은?\n→ ${location.href}`;
+  const tags = getShareHashtags().join(' ');
+  return `AI 시대 미래역량 검사 결과: 나는 ${arch.emoji}${arch.title}! 종합 ${r.avgScore}점.\n당신의 미래 역량은?\n${location.origin}\n\n${tags}`;
 }
 
 function setupShareButtons() {
   document.getElementById('copyLinkBtn').addEventListener('click', async () => {
+    window.bt?.track?.('share_click',{channel:'copy'});
     const text = getShareText();
     try {
       await navigator.clipboard.writeText(text);
@@ -1443,10 +1462,24 @@ function setupShareButtons() {
   });
 
   document.getElementById('shareXBtn').addEventListener('click', () => {
+    window.bt?.track?.('share_click',{channel:'x'});
     const text = getShareText();
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'width=550,height=420');
   });
+  const kkBtn = document.getElementById('shareKakaoBtn');
+  if (kkBtn) {
+    kkBtn.addEventListener('click', async () => {
+      window.bt?.track?.('share_click',{channel:'kakao'});
+      // 카카오 SDK 없이도 동작하도록 Web Share API → 실패 시 링크 복사 폴백
+      const text = getShareText();
+      if (navigator.share) {
+        try { await navigator.share({ title:'BTS 미래역량 검사', text, url:location.origin }); return; } catch(e){}
+      }
+      try { await navigator.clipboard.writeText(text); showToast('카톡 친구에게 붙여넣기 하세요 📋'); }
+      catch(e){ showToast('공유 링크를 복사하지 못했습니다'); }
+    });
+  }
 }
 
 function renderResult(){
@@ -1539,11 +1572,18 @@ function renderResult(){
   shareCard.style.display = 'block';
   shareCard.innerHTML = `
     <div class="result-card-title">📤 결과 공유하기</div>
+    <div id="hashtagPreview" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;"></div>
     <div class="share-wrap">
-      <button class="share-btn" id="copyLinkBtn">📋 링크 복사</button>
-      <button class="share-btn" id="shareXBtn">𝕏 공유</button>
+      <button class="share-btn" id="copyLinkBtn" aria-label="결과 링크 복사">📋 링크 복사</button>
+      <button class="share-btn" id="shareXBtn" aria-label="X에 공유">𝕏 공유</button>
+      <button class="share-btn" id="shareKakaoBtn" aria-label="카카오톡으로 공유">💬 카톡 공유</button>
     </div>
   `;
+  // 해시태그 프리뷰
+  const hpEl = document.getElementById('hashtagPreview');
+  if (hpEl) {
+    hpEl.innerHTML = getShareHashtags().map(t=>`<span style="background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;">${t}</span>`).join('');
+  }
 
   // BTS CTA
   const btsCta = document.getElementById('btsCta');
@@ -1858,6 +1898,50 @@ function renderFamilyResult() {
     });
   }, 300);
 
+  // === 각 구성원별 강점 / 성장 / 7일 액션 (개인 모드 파리티) ===
+  const ACTION_POOL_FAM = {
+    structural:['하루 업무를 3단계로 포스트잇에 분해','문제를 "왜→무엇→어떻게" 3층으로 정리','주간 목표를 "결과/행동/지표"로 재작성'],
+    creative:['같은 문제 해법 3개 억지로 만들기','익숙한 도구를 이상하게 써보기','"만약 반대라면?" 질문으로 하루 마감'],
+    emotional:['대화 중 상대 감정 단어 따라말하기','하루 감정을 3단어로 요약','감사 문자 1통 구체적 장면 포함해 전송'],
+    adaptive:['익숙한 경로 대신 다른 길로 이동','새 도구 1개 10분만 써보기','계획 틀어졌을 때 "플랜 B" 즉석 작성'],
+    ethical:['결정 1개의 영향받는 사람 3명 적기','"단기 이득 vs 장기 가치" 표 비교','뉴스 윤리 이슈에 판단 근거 쓰기'],
+    collab:['회의 중 다른 의견 요약해 확인','동료에게 구체적 피드백 전달','다른 배경 사람과 커피챗 15분']
+  };
+  // 기존 구조에 섹션 주입 (familyCompareChart 다음에)
+  const parentEl = chart.parentNode;
+  let growthSection = document.getElementById('familyGrowthSection');
+  if (!growthSection) {
+    growthSection = document.createElement('div');
+    growthSection.id = 'familyGrowthSection';
+    growthSection.className = 'result-card';
+    growthSection.style.cssText = 'margin:0 20px 16px;max-width:500px;margin-left:auto;margin-right:auto;';
+    parentEl.parentNode.insertBefore(growthSection, parentEl.nextSibling);
+  }
+  growthSection.innerHTML = '<div class="result-card-title">🌱 각자의 7일 액션 플랜</div>' +
+    familyMembers.map((m) => {
+      const sorted = Object.entries(m.normScores).sort((a,b)=>b[1]-a[1]);
+      const strongKey = sorted[0][0];
+      const weakKey = sorted[sorted.length-1][0];
+      const weakKey2 = sorted[sorted.length-2][0];
+      const pick = (arr) => arr[Math.abs((m.avgScore*7) + (weakKey.length)) % arr.length];
+      const actions = [
+        pick(ACTION_POOL_FAM[weakKey]||ACTION_POOL_FAM.structural),
+        pick(ACTION_POOL_FAM[weakKey2]||ACTION_POOL_FAM.structural),
+        pick(ACTION_POOL_FAM[strongKey]||ACTION_POOL_FAM.structural)
+      ];
+      return `<div style="padding:12px 0;border-top:1px dashed var(--border);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:20px;">${m.archetypeEmoji}</span>
+          <strong style="font-size:14px;">${m.name}</strong>
+          <span style="font-size:11px;color:var(--text-dim);">· ${m.archetype}</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-bottom:6px;">🌟 강점: <strong style="color:var(--primary);">${SKILLS_INFO[strongKey].name}</strong> · 🌱 성장: <strong style="color:#D97706;">${SKILLS_INFO[weakKey].name}</strong></div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;">
+          ${actions.map((a,i)=>`<li style="display:flex;gap:8px;font-size:12px;line-height:1.5;"><span style="color:var(--primary);font-weight:700;min-width:42px;">Day ${[1,3,7][i]}</span><span>${a}</span></li>`).join('')}
+        </ul>
+      </div>`;
+    }).join('');
+
   // 가족 대화 주제
   const talkList = document.getElementById('familyTalkList');
   talkList.innerHTML = '';
@@ -1895,8 +1979,10 @@ function renderFamilyResult() {
     </div>
   `;
 
+  const famTags = '#BTS미래역량검사 #가족역량탐색 #AI시대역량';
   document.getElementById('familyCopyBtn').addEventListener('click', async () => {
-    const text = `우리 가족 미래역량 검사 결과!\n${familyMembers.map(m=>`${m.name}: ${m.archetypeEmoji}${m.archetype} (${m.avgScore}점)`).join('\n')}\n→ ${location.href}`;
+    window.bt?.track?.('share_click',{channel:'copy',mode:'family'});
+    const text = `우리 가족 미래역량 검사 결과!\n${familyMembers.map(m=>`${m.name}: ${m.archetypeEmoji}${m.archetype} (${m.avgScore}점)`).join('\n')}\n${location.origin}\n\n${famTags}`;
     try { await navigator.clipboard.writeText(text); } catch {
       const ta = document.createElement('textarea'); ta.value = text;
       document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
@@ -1905,7 +1991,8 @@ function renderFamilyResult() {
   });
 
   document.getElementById('familyShareXBtn').addEventListener('click', () => {
-    const text = `우리 가족 미래역량 검사 결과! ${familyMembers.map(m=>`${m.name}=${m.archetypeEmoji}`).join(' ')}\n→ ${location.href}`;
+    window.bt?.track?.('share_click',{channel:'x',mode:'family'});
+    const text = `우리 가족 미래역량 검사 결과! ${familyMembers.map(m=>`${m.name}=${m.archetypeEmoji}`).join(' ')}\n${location.origin}\n\n${famTags}`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank', 'width=550,height=420');
   });
 
