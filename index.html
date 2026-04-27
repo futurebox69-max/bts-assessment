@@ -235,9 +235,13 @@ button { font-family:inherit; cursor:pointer; touch-action:manipulation; }
 .bts-cta { background:linear-gradient(135deg,#1E1B4B,#312E81); border-radius:var(--radius); padding:28px 24px; text-align:center; color:#fff; margin:16px 20px; max-width:500px; margin-left:auto; margin-right:auto; }
 .bts-cta h3 { font-size:18px; font-weight:800; margin-bottom:8px; }
 .bts-cta p { font-size:13px; opacity:0.8; line-height:1.6; margin-bottom:16px; }
-.bts-btn { display:inline-block; padding:14px 32px; border-radius:12px; background:#fff; color:#1E1B4B; font-size:15px; font-weight:700; border:none; box-shadow:0 4px 16px rgba(0,0,0,0.2); cursor:pointer; }
+.bts-btn { display:block; width:100%; padding:14px 24px; border-radius:12px; background:#fff; color:#1E1B4B; font-size:15px; font-weight:700; border:none; box-shadow:0 4px 16px rgba(0,0,0,0.2); cursor:pointer; }
+.bts-btn-secondary { background:transparent; color:#fff; box-shadow:none; border:1.5px solid rgba(255,255,255,0.4); }
 .bts-features { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
 .bts-feat { font-size:11px; padding:3px 10px; border-radius:8px; background:rgba(255,255,255,0.12); }
+/* §E 트랙별 인사이트 블록 */
+.track-block { background:var(--bg-card); border-radius:10px; padding:14px 16px; }
+.track-block-label { font-size:11px; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:6px; }
 
 /* Footer */
 footer { text-align:center; padding:40px 20px; font-size:12px; color:var(--text-light); }
@@ -805,7 +809,10 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
   <!-- ④ 공유 (Task 5에서 구현) -->
   <div class="result-card" id="shareCard" style="display:none;"></div>
 
-  <!-- ⑤ BTS CTA (Task 6에서 구현) -->
+  <!-- §E 트랙별 인사이트 카드 -->
+  <div class="result-card" id="trackInsightCard" style="display:none;"></div>
+
+  <!-- §E 트랙별 CTA -->
   <div class="bts-cta" id="btsCta" style="display:none;"></div>
 
   <!-- ⑥ 블러 미리보기 (Task 7에서 구현) -->
@@ -1747,22 +1754,44 @@ function renderResult(){
     hpEl.innerHTML = getShareHashtags().map(t=>`<span style="background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;">${t}</span>`).join('');
   }
 
-  // BTS CTA
-  const btsCta = document.getElementById('btsCta');
-  btsCta.style.display = 'block';
-  btsCta.innerHTML = `
-    <h3>🔮 내 직업의 AI 대체율도 분석하기</h3>
-    <p>당신의 역량을 특정 직업과 교차 분석하면<br>더 구체적인 전환 전략이 나옵니다</p>
-    <button class="bts-btn" id="btsCTABtn">BTS에서 심층 분석 받기 →</button>
-    <div class="bts-features">
-      <span class="bts-feat">AI 대체율 분석</span>
-      <span class="bts-feat">10년 예측</span>
-      <span class="bts-feat">전환 경로</span>
-      <span class="bts-feat">스킬 로드맵</span>
-    </div>
-  `;
+  // §E 트랙별 인사이트 카드 + CTA
+  const track = selectedTrack || 'adult';
+  const weakDims = sortedScores.slice(-2).map(([k]) => SKILLS_INFO[k]);
 
-  // Base64 토큰 생성
+  const trackInsightCard = document.getElementById('trackInsightCard');
+  trackInsightCard.style.display = 'block';
+
+  if (track === 'adult') {
+    // E1 성인용
+    const watchLabels = weakDims.map(d => `${d.icon} ${d.name}`).join(' · ');
+    trackInsightCard.innerHTML = `
+      <div class="result-card-title">🗺 지금 여기서 더 보면 좋은 것들</div>
+      <div class="track-block">
+        <div class="track-block-label">추가 확인 영역</div>
+        <p class="insight-text">${watchLabels} — 이 두 축이 지금 가장 빠르게 활성화될 여지가 있습니다. 작은 루틴 하나로 감각을 붙여 보세요.</p>
+      </div>
+      <div class="track-block" style="margin-top:16px;">
+        <div class="track-block-label">직업 변화 · AI · 커리어 재설계</div>
+        <p class="insight-text">AI가 대체하는 건 직무의 일부입니다. 역할의 <strong>구조</strong>를 다시 보면 어디서 레버리지를 쓸 수 있는지가 보입니다. 지금 역량 신호를 특정 직업과 교차하면 더 구체적인 전환 경로가 나옵니다.</p>
+      </div>
+    `;
+  } else {
+    // E2 청소년용
+    const growLabels = weakDims.map(d => `${d.icon} ${d.name}`).join(' · ');
+    trackInsightCard.innerHTML = `
+      <div class="result-card-title">🌱 더 키워보면 좋은 영역</div>
+      <div class="track-block">
+        <div class="track-block-label">지금 가장 자랄 수 있는 축</div>
+        <p class="insight-text">${growLabels} — 아직 펼쳐지지 않은 가능성이에요. 잘못된 게 아니라, 다음에 올 거예요.</p>
+      </div>
+      <div class="track-block" style="margin-top:16px;">
+        <div class="track-block-label">진로 탐색 · 학습 습관 · 미래역량</div>
+        <p class="insight-text">진로는 정답이 아니라 <strong>방향</strong>입니다. 지금 어떤 역량 신호가 활성화됐는지 알면, 어떤 방향을 먼저 탐색할지 힌트가 생깁니다. 더 알아보고 싶다면 다음 단계로 가 보세요.</p>
+      </div>
+    `;
+  }
+
+  // Base64 토큰 (직업의미래 앱 연동용)
   const KEY_MAP = {structural:'st',creative:'cr',emotional:'ec',adaptive:'aa',ethical:'ej',collab:'ci'};
   const shortScores = {};
   for (const [k,v] of Object.entries(competencyResult.scores)) {
@@ -1773,11 +1802,43 @@ function renderResult(){
     type: competencyResult.typeKey,
     t: Date.now()
   }));
-  const btsUrl = `https://job-future-analyzer.vercel.app?competency=${token}`;
+  const jobFutureBase = 'https://job-future-analyzer.vercel.app';
+  const reframeUrl = 'https://futurebox.live';
 
-  document.getElementById('btsCTABtn').addEventListener('click', () => {
-    window.open(btsUrl, '_blank');
-  });
+  const btsCta = document.getElementById('btsCta');
+  btsCta.style.display = 'block';
+
+  if (track === 'adult') {
+    btsCta.innerHTML = `
+      <h3>🔍 다음 단계 — 직업 구조까지 보기</h3>
+      <p>역량 신호와 직업을 교차하면 전환 경로가 보입니다.</p>
+      <button class="bts-btn" id="btsCTA1">내 직업의 미래 확인하기 →</button>
+      <button class="bts-btn bts-btn-secondary" id="btsCTA2" style="margin-top:10px;">REFRAME 본 진단으로 더 깊이 보기 →</button>
+    `;
+    document.getElementById('btsCTA1').addEventListener('click', () => {
+      window.bt?.track?.('cta_click', {track:'adult', dest:'job_future'});
+      window.open(`${jobFutureBase}?track=adult&competency=${token}`, '_blank');
+    });
+    document.getElementById('btsCTA2').addEventListener('click', () => {
+      window.bt?.track?.('cta_click', {track:'adult', dest:'reframe'});
+      window.open(reframeUrl, '_blank');
+    });
+  } else {
+    btsCta.innerHTML = `
+      <h3>🌟 다음 단계 — 가능성을 더 탐색하기</h3>
+      <p>지금 신호를 가지고 어떤 방향이 맞는지 더 넓게 볼 수 있어요.</p>
+      <button class="bts-btn" id="btsCTA1">나의 미래 가능성 더 알아보기 →</button>
+      <button class="bts-btn bts-btn-secondary" id="btsCTA2" style="margin-top:10px;">청소년용 REFRAME 진단 계속하기 →</button>
+    `;
+    document.getElementById('btsCTA1').addEventListener('click', () => {
+      window.bt?.track?.('cta_click', {track:'teen', dest:'job_future'});
+      window.open(`${jobFutureBase}?track=teen&competency=${token}`, '_blank');
+    });
+    document.getElementById('btsCTA2').addEventListener('click', () => {
+      window.bt?.track?.('cta_click', {track:'teen', dest:'reframe'});
+      window.open(reframeUrl, '_blank');
+    });
+  }
 
   // 블러 미리보기 + 이메일
   const GOOGLE_FORM_URL = ''; // Google Form 생성 후 URL 입력
@@ -2158,14 +2219,23 @@ function renderFamilyResult() {
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank', 'width=550,height=420');
   });
 
-  // BTS CTA
+  // §E 가족 CTA (family=teen 고정)
   const btsCta = document.getElementById('familyBtsCta');
   btsCta.style.display = 'block';
   btsCta.innerHTML = `
-    <h3>🔮 가족의 직업 미래도 분석하기</h3>
-    <p>각자의 역량을 직업과 교차 분석하면<br>더 구체적인 전환 전략이 나옵니다</p>
-    <button class="bts-btn" onclick="window.open('https://job-future-analyzer.vercel.app','_blank')">BTS에서 심층 분석 받기 →</button>
+    <h3>🌟 다음 단계 — 가능성을 더 탐색하기</h3>
+    <p>각자의 역량 신호를 가지고 어떤 방향이 맞는지 더 넓게 볼 수 있어요.</p>
+    <button class="bts-btn" id="familyCTA1">나의 미래 가능성 더 알아보기 →</button>
+    <button class="bts-btn bts-btn-secondary" id="familyCTA2" style="margin-top:10px;">청소년용 REFRAME 진단 계속하기 →</button>
   `;
+  document.getElementById('familyCTA1').addEventListener('click', () => {
+    window.bt?.track?.('cta_click', {track:'teen', dest:'job_future', mode:'family'});
+    window.open('https://job-future-analyzer.vercel.app?track=teen', '_blank');
+  });
+  document.getElementById('familyCTA2').addEventListener('click', () => {
+    window.bt?.track?.('cta_click', {track:'teen', dest:'reframe', mode:'family'});
+    window.open('https://futurebox.live', '_blank');
+  });
 }
 
 </script>
