@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>미래역량 검사 | REFRAME — 내 삶을 다시 설계하다</title>
-<meta name="description" content="AI 시대, 당신의 강점과 성장 포인트를 6차원으로 탐색합니다. 3분, 8문항, 무료. 결과는 바로 확인 가능합니다.">
+<meta name="description" content="AI 시대, 당신의 강점과 성장 포인트를 6차원으로 탐색합니다. 3분, 무료. 결과는 바로 확인 가능합니다.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0B1B2B">
 <meta property="og:title" content="미래역량 검사 — AI 시대 나의 강점 발견하기">
-<meta property="og:description" content="위협이 아닌 기회로 보는 역량 지도. 3분, 8문항으로 내 강점 2개와 성장 포인트 2개를 확인하세요.">
+<meta property="og:description" content="위협이 아닌 기회로 보는 역량 지도. 3분으로 내 강점 2개와 성장 포인트 2개를 확인하세요.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:url" content="https://bts-assessment.vercel.app">
@@ -611,7 +611,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <details style="background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 20px; margin-top:10px; box-shadow:var(--shadow);">
       <summary style="font-size:14px; font-weight:700; cursor:pointer;">⚠️ 한계와 비진단 고지</summary>
       <div style="font-size:13px; color:var(--text-dim); line-height:1.7; margin-top:10px;">
-        <p><strong>스냅샷 검사입니다</strong> — 8문항 기반이라 개인 역량의 완전한 측정이 아닙니다. 기분·환경에 따라 ±10점 변동 가능.</p>
+        <p><strong>스냅샷 검사입니다</strong> — 1차 베타 버전으로 개인 역량의 완전한 측정이 아닙니다. 기분·환경에 따라 ±10점 변동 가능.</p>
         <p style="margin-top:8px;"><strong>타당도 검증 진행 중</strong> — 표준화 검사(O*NET Big 5 등)와의 상관 분석은 향후 업데이트 예정. 현재는 <em>탐색적 도구</em>로 포지셔닝합니다.</p>
         <p style="margin-top:8px;"><strong>사용 금지 용도</strong> — 채용·자격·임상 진단·역량 비교 순위 매기기. 본 검사 결과를 이런 용도로 쓰면 잘못된 결론을 낳습니다.</p>
         <p style="margin-top:8px;"><strong>권장 사용</strong> — 자기인식 출발점, 가족 간 대화 도구, 7일 행동 실험의 선택 기준. 전문 진로 상담의 <em>대체</em>가 아닌 <em>보완</em>으로.</p>
@@ -655,7 +655,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="mode-emoji">🧑</div>
       <div class="mode-title">개인 검사</div>
       <div class="mode-desc">나만의 미래 역량을 탐색합니다</div>
-      <div class="mode-badge" style="background:var(--primary-light); color:var(--primary);">3분 · 8문항</div>
+      <div class="mode-badge" style="background:var(--primary-light); color:var(--primary);">3분 · 역량 신호 체크</div>
     </div>
     <div class="mode-card" id="modeFamily">
       <div class="mode-emoji">👨‍👩‍👧‍👦</div>
@@ -678,6 +678,31 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="family-count" id="familyCountBtns"></div>
     </div>
     <button class="name-submit" id="nameSubmitBtn" disabled>시작하기 →</button>
+    <div id="familyTrackNotice" style="display:none; margin-top:16px; padding:10px 14px; border-radius:10px; background:rgba(201,162,75,0.1); border:1px solid rgba(201,162,75,0.25); font-size:12px; color:var(--text-dim); text-align:center; line-height:1.6;">
+      🔒 가족 모드는 청소년 트랙으로 고정됩니다.<br>
+      본인 검사를 하시려면 <strong style="color:var(--primary);">개인 모드</strong>로 전환하세요.
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCREEN: TRACK SELECT ===== -->
+<div class="screen" id="trackScreen">
+  <div style="text-align:center; padding:40px 20px 20px;">
+    <div style="font-size:36px; margin-bottom:8px;">👤</div>
+    <div class="section-title" style="font-size:22px;">누가 검사하나요?</div>
+    <div class="section-desc" style="font-size:13px;">트랙에 따라 질문 맥락이 달라집니다</div>
+  </div>
+  <div style="max-width:420px; margin:0 auto; padding:12px 20px;">
+    <div class="method-cards" id="trackCards">
+      <div class="method-card" id="trackAdultCard">
+        <div class="method-icon">💼</div>
+        <div class="method-info"><h4>성인</h4><p>직업·커리어 맥락의 질문</p><div class="method-tag">직장인 · 커리어</div></div>
+      </div>
+      <div class="method-card" id="trackTeenCard">
+        <div class="method-icon">🎮</div>
+        <div class="method-info"><h4>청소년</h4><p>게임·학교 맥락의 질문</p><div class="method-tag">학생 · 진로</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -696,10 +721,12 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
 
 <!-- ===== SCREEN 3: ASSESSMENT ===== -->
 <div class="screen" id="assessScreen">
+  <!-- §C5 베타 안내 박스 (startAssessment에서 N 채움) -->
+  <div id="betaNotice" style="display:none; margin:16px 20px 0; padding:12px 16px; border-radius:12px; background:rgba(201,162,75,0.1); border:1px solid rgba(201,162,75,0.3); font-size:13px; color:var(--text-dim); line-height:1.7;"></div>
   <div class="assess-header">
     <div class="assess-progress">
-      <span class="assess-count" id="roundLabel">1/8</span>
-      <div class="assess-bar"><div class="assess-fill" id="progressFill" style="width:12.5%"></div></div>
+      <span class="assess-count" id="roundLabel">1/—</span>
+      <div class="assess-bar"><div class="assess-fill" id="progressFill" style="width:0%"></div></div>
       <span class="assess-timer" id="timerDisplay">30</span>
     </div>
   </div>
@@ -892,25 +919,25 @@ const TYPE_VERDICTS = {
 
 const scenarioBanks = {
   adult:[
-    {ctx:'직장 위기',emoji:'💼',text:'팀에서 AI 도구를 도입했는데, 동료가 "일자리가 위험하다"며 불안해합니다. 어떻게 하시겠습니까?',type:'scenario',
+    {ctx:'직장 위기',emoji:'💼',track:'adult',text:'팀에서 AI 도구를 도입했는데, 동료가 "일자리가 위험하다"며 불안해합니다. 어떻게 하시겠습니까?',type:'scenario',
       choices:[
         {text:'"AI가 대체하는 업무 vs 우리만의 강점"을 정리해서 팀 미팅을 연다',skills:{structural:3,collab:1},fb:'구조로 불안을 해소'},
         {text:'"이걸 기회로 새 역할을 만들자"며 AI+인간 협업 모델을 제안한다',skills:{creative:3,adaptive:1},fb:'위기를 기회로'},
         {text:'동료의 감정을 먼저 들어주고, 함께 대응 방안을 찾자고 한다',skills:{emotional:3,collab:1},fb:'사람을 먼저 보는 리더'},
         {text:'AI 도입의 윤리적 가이드라인을 먼저 만들자고 경영진에 건의한다',skills:{ethical:3,structural:1},fb:'원칙이 있는 대응'}]},
-    {ctx:'이직 고민',emoji:'🔄',text:'연봉 30% 인상 제안을 받았지만, 그 회사는 AI 자동화를 적극 추진 중입니다.',type:'scenario',
+    {ctx:'이직 고민',emoji:'🔄',track:'adult',text:'연봉 30% 인상 제안을 받았지만, 그 회사는 AI 자동화를 적극 추진 중입니다.',type:'scenario',
       choices:[
         {text:'6개월 치 데이터로 분석. 감이 아닌 숫자로 결정한다',skills:{structural:3,adaptive:1},fb:'데이터 기반 결정'},
         {text:'"AI를 활용하는 포지션을 만들겠다"며 역제안한다',skills:{creative:3,adaptive:1},fb:'협상의 재설계'},
         {text:'현 직장 동료들과의 관계, 문화 적합성을 먼저 고려한다',skills:{emotional:3,ethical:1},fb:'관계 중심 판단'},
         {text:'두 회사 모두의 3년 후 시나리오를 그려보고 판단한다',skills:{adaptive:3,structural:1},fb:'미래 시뮬레이션'}]},
-    {ctx:'부업 기회',emoji:'💡',text:'퇴근 후 AI를 활용한 부업 기회가 생겼습니다. 하지만 본업과 시간 충돌이 있습니다.',type:'scenario',
+    {ctx:'부업 기회',emoji:'💡',track:'adult',text:'퇴근 후 AI를 활용한 부업 기회가 생겼습니다. 하지만 본업과 시간 충돌이 있습니다.',type:'scenario',
       choices:[
         {text:'본업과 부업의 시너지 영역을 찾아 둘을 연결한다',skills:{structural:3,creative:1},fb:'구조적 통합'},
         {text:'과감하게 본업을 줄이고 부업에 올인한다',skills:{adaptive:3,creative:1},fb:'변화에 뛰어들기'},
         {text:'가족과 상의하고, 생활 패턴에 미치는 영향을 먼저 고려한다',skills:{emotional:3,ethical:1},fb:'삶의 균형 우선'},
         {text:'3개월 시범 운영 후 데이터로 판단한다',skills:{structural:2,adaptive:2},fb:'실험적 접근'}]},
-    {ctx:'팀 갈등',emoji:'🤝',text:'프로젝트에서 두 팀원이 심하게 대립합니다. 당신이 중재해야 합니다.',type:'scenario',
+    {ctx:'팀 갈등',emoji:'🤝',track:'adult',text:'프로젝트에서 두 팀원이 심하게 대립합니다. 당신이 중재해야 합니다.',type:'scenario',
       choices:[
         {text:'"왜 실패했는지 같이 봐보자" — 리플레이 분석을 제안',skills:{structural:3,collab:1},fb:'팀의 분석가'},
         {text:'두 사람의 아이디어를 합쳐 제3의 안을 만든다',skills:{creative:3,collab:1},fb:'창의적 중재'},
@@ -918,25 +945,25 @@ const scenarioBanks = {
         {text:'팀 규칙을 세우고, 역할을 명확히 재분배한다',skills:{ethical:3,structural:1},fb:'규칙으로 신뢰를'}]}
   ],
   youth:[
-    {ctx:'LoL 팀 위기',emoji:'🎮',text:'랭크 게임에서 탑이 0/5가 되었습니다. 팀 분위기가 최악입니다.',type:'scenario',
+    {ctx:'LoL 팀 위기',emoji:'🎮',track:'teen',text:'랭크 게임에서 탑이 0/5가 되었습니다. 팀 분위기가 최악입니다.',type:'scenario',
       choices:[
         {text:'"탑은 스플릿 포기하고 팀파이트에 집중해" — 전략 수정 제안',skills:{structural:3,adaptive:1},fb:'전략적 사고'},
         {text:'"괜찮아, 후반 가면 우리 한타 구성이 더 좋아" — 멘탈 케어',skills:{emotional:3,collab:1},fb:'팀의 정신적 지주'},
         {text:'자신의 라인에서 초반 이득을 극대화해서 캐리를 시도한다',skills:{adaptive:3,creative:1},fb:'개인기로 돌파'},
         {text:'"서렌 투표 올려" — 빠른 손절 후 다음 판에 집중',skills:{adaptive:2,structural:2},fb:'효율적 판단'}]},
-    {ctx:'마크 건축',emoji:'⛏️',text:'마인크래프트에서 친구들과 마을을 만들고 있습니다. 의견이 달라서 진행이 안 됩니다.',type:'scenario',
+    {ctx:'마크 건축',emoji:'⛏️',track:'teen',text:'마인크래프트에서 친구들과 마을을 만들고 있습니다. 의견이 달라서 진행이 안 됩니다.',type:'scenario',
       choices:[
         {text:'구역을 나눠서 각자 맡은 부분을 만든 뒤 합친다',skills:{structural:3,collab:1},fb:'분업의 힘'},
         {text:'모두의 아이디어를 합쳐서 전혀 새로운 건축 테마를 만든다',skills:{creative:3,collab:1},fb:'창의적 융합'},
         {text:'"다 좋은데, 일단 네 아이디어부터 해보자" — 한 명씩 시도',skills:{emotional:3,adaptive:1},fb:'존중하며 전진'},
         {text:'투표로 결정한다. 민주적이고 공정하게',skills:{ethical:3,structural:1},fb:'공정한 프로세스'}]},
-    {ctx:'포트나이트 스쿼드',emoji:'🔫',text:'포트나이트에서 스쿼드 중 한 명이 계속 혼자 돌아다니다 죽습니다.',type:'scenario',
+    {ctx:'포트나이트 스쿼드',emoji:'🔫',track:'teen',text:'포트나이트에서 스쿼드 중 한 명이 계속 혼자 돌아다니다 죽습니다.',type:'scenario',
       choices:[
         {text:'지형 분석 → 고지대 확보 → 하나씩 유인해서 각개격파 전략 제안',skills:{structural:3,adaptive:1},fb:'전략적 사고'},
         {text:'그 친구 플레이 스타일에 맞는 역할을 새로 만들어준다',skills:{creative:3,emotional:1},fb:'맞춤형 해법'},
         {text:'"같이 다니자, 네가 죽으면 우리가 슬퍼" — 감성 호소',skills:{emotional:3,collab:1},fb:'팀워크는 감정에서'},
         {text:'역할 분담을 정하고 규칙을 만든다 (스카우트/서포트/공격)',skills:{structural:2,collab:2},fb:'시스템으로 해결'}]},
-    {ctx:'로블록스 사업',emoji:'🏗️',text:'로블록스에서 게임을 만들었는데 접속자가 점점 줄고 있습니다.',type:'scenario',
+    {ctx:'로블록스 사업',emoji:'🏗️',track:'teen',text:'로블록스에서 게임을 만들었는데 접속자가 점점 줄고 있습니다.',type:'scenario',
       choices:[
         {text:'접속 데이터를 분석해서 이탈 구간을 찾아 개선한다',skills:{structural:3,adaptive:1},fb:'데이터 기반 개선'},
         {text:'다른 인기 게임을 분석하고, 완전히 다른 컨셉으로 리뉴얼',skills:{creative:3,structural:1},fb:'벤치마킹의 힘'},
@@ -944,47 +971,64 @@ const scenarioBanks = {
         {text:'수익화보다 커뮤니티를 먼저 만든다. 팬이 있으면 게임은 산다',skills:{collab:3,emotional:1},fb:'관계가 먼저'}]}
   ],
   image:[
-    {ctx:'상징 선택',emoji:'🔮',text:'두 가지 중 더 끌리는 것을 고르세요.',type:'image',
+    {ctx:'상징 선택',emoji:'🔮',track:'both',text:'두 가지 중 더 끌리는 것을 고르세요.',type:'image',
       choices:[
         {emoji:'🗺️',label:'지도',desc:'전체를 보고 길을 찾는다',skills:{structural:3,adaptive:1}},
         {emoji:'🧭',label:'나침반',desc:'방향만 알면 길은 만든다',skills:{creative:3,adaptive:1}}]},
-    {ctx:'도구 선택',emoji:'🛠️',text:'하나만 가져갈 수 있다면?',type:'image',
+    {ctx:'도구 선택',emoji:'🛠️',track:'both',text:'하나만 가져갈 수 있다면?',type:'image',
       choices:[
         {emoji:'🔬',label:'현미경',desc:'깊이 파고들어 진실을 본다',skills:{structural:3,ethical:1}},
         {emoji:'🔭',label:'망원경',desc:'멀리 보고 큰 그림을 그린다',skills:{creative:3,adaptive:1}}]},
-    {ctx:'길 선택',emoji:'🛤️',text:'어떤 길로 가시겠습니까?',type:'image',
+    {ctx:'길 선택',emoji:'🛤️',track:'both',text:'어떤 길로 가시겠습니까?',type:'image',
       choices:[
         {emoji:'🏔️',label:'산길',desc:'어렵지만 정상에서 전부 보인다',skills:{adaptive:3,structural:1}},
         {emoji:'🌊',label:'바닷길',desc:'흐름을 타면 더 멀리 간다',skills:{creative:2,emotional:2}}]},
-    {ctx:'팀 역할',emoji:'👥',text:'팀에서 당신의 자연스러운 역할은?',type:'image',
+    {ctx:'팀 역할',emoji:'👥',track:'both',text:'팀에서 당신의 자연스러운 역할은?',type:'image',
       choices:[
         {emoji:'🎯',label:'전략가',desc:'방향을 정하고 계획을 세운다',skills:{structural:3,ethical:1}},
         {emoji:'🔥',label:'점화자',desc:'에너지를 불어넣고 사기를 올린다',skills:{emotional:3,collab:1}}]}
   ],
   rank:[
-    {ctx:'가치 순위',emoji:'⚖️',text:'AI 시대에 가장 중요한 순서로 배열하세요.',type:'rank',
+    {ctx:'가치 순위',emoji:'⚖️',track:'both',text:'AI 시대에 가장 중요한 순서로 배열하세요.',type:'rank',
       items:['비판적 사고','감성 지능','기술 적응력','윤리적 판단','창의성','협업 능력'],
       skillMap:['structural','emotional','adaptive','ethical','creative','collab']},
-    {ctx:'행동 순위',emoji:'🎯',text:'새 프로젝트 시작 시, 먼저 하는 순서대로.',type:'rank',
+    {ctx:'행동 순위',emoji:'🎯',track:'both',text:'새 프로젝트 시작 시, 먼저 하는 순서대로.',type:'rank',
       items:['사람들 의견 듣기','데이터 분석하기','일단 시작하기','계획 세우기','기존 사례 조사','목표 재정의'],
       skillMap:['collab','structural','adaptive','structural','creative','ethical']}
   ]
 };
 
 function buildScenarios(qtype){
-  const main = scenarioBanks.adult;
-  switch(qtype){
-    case 'scenario': return [...main.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,2)];
-    case 'game': return [...scenarioBanks.youth.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,1),...main.slice(0,1)];
-    case 'image': return [...scenarioBanks.image,...main.slice(0,2),...scenarioBanks.rank.slice(0,2)];
-    case 'rank': return [...scenarioBanks.rank,...scenarioBanks.image,...main.slice(0,2)];
-    default: return [...main.slice(0,4),...scenarioBanks.image.slice(0,2),...scenarioBanks.rank.slice(0,2)];
-  }
+  const mainType = qtype === 'game' ? 'scenario' : qtype;
+
+  // §C2: type AND track 두 차원 교집합. 보충 로직 없음 (v2.2 spec-lock).
+  // track='both'(image/rank)는 어느 selectedTrack에서도 포함.
+  const allQ = [
+    ...scenarioBanks.adult,
+    ...scenarioBanks.youth,
+    ...scenarioBanks.image,
+    ...scenarioBanks.rank
+  ];
+  const filtered = allQ.filter(
+    q => q.type === mainType && (q.track === selectedTrack || q.track === 'both')
+  );
+
+  // §C3 검증 (오염 감지)
+  console.assert(
+    filtered.every(q => q.type === mainType && (q.track === selectedTrack || q.track === 'both')),
+    '[§C3] filteredQuestions 오염 감지'
+  );
+
+  // §C5 콘솔 보조
+  console.log(`[track-filter] track:${selectedTrack}, type:${mainType} → ${filtered.length}개 문항`);
+
+  return filtered;
 }
 
 // ===== STATE =====
 let currentScreen = 'landing';
 let selectedQType = 'scenario';
+let selectedTrack = null; // 'adult' | 'teen'
 let scenarios = [];
 let round = 0;
 let scores = {structural:0,creative:0,emotional:0,adaptive:0,ethical:0,collab:0};
@@ -1089,12 +1133,14 @@ document.getElementById('heroSampleBtn')?.addEventListener('click',()=>{
 document.getElementById('modePersonal').addEventListener('click', () => {
   window.bt?.track?.('mode_select',{mode:'personal'});
   gameMode = 'personal';
+  selectedTrack = null;
   familyMembers = [];
   currentFamilyIdx = 0;
   document.getElementById('nameEmoji').textContent = '🧑';
   document.getElementById('nameTitle').textContent = '이름을 알려주세요';
   document.getElementById('nameDesc').textContent = '결과에 이름이 표시됩니다';
   document.getElementById('familyCountSection').style.display = 'none';
+  document.getElementById('familyTrackNotice').style.display = 'none';
   document.getElementById('playerNameInput').value = '';
   document.getElementById('playerNameInput').placeholder = '이름 입력';
   document.getElementById('nameSubmitBtn').disabled = true;
@@ -1105,12 +1151,14 @@ document.getElementById('modePersonal').addEventListener('click', () => {
 document.getElementById('modeFamily').addEventListener('click', () => {
   window.bt?.track?.('mode_select',{mode:'family'});
   gameMode = 'family';
+  selectedTrack = 'teen'; // §B0: 가족 모드 → 청소년 트랙 자동 고정
   familyMembers = [];
   currentFamilyIdx = 0;
   document.getElementById('nameEmoji').textContent = '👨‍👩‍👧‍👦';
   document.getElementById('nameTitle').textContent = '가족 검사 설정';
   document.getElementById('nameDesc').textContent = '첫 번째 가족 구성원의 이름을 입력하세요';
   document.getElementById('familyCountSection').style.display = 'block';
+  document.getElementById('familyTrackNotice').style.display = 'block';
   document.getElementById('playerNameInput').value = '';
   document.getElementById('playerNameInput').placeholder = '첫 번째 가족 이름';
   document.getElementById('nameSubmitBtn').disabled = true;
@@ -1144,35 +1192,83 @@ document.getElementById('playerNameInput').addEventListener('keydown', (e) => {
   }
 });
 
-// 이름 확인 → 다음 화면
+// 이름 확인 → 다음 화면 (개인: 트랙 선택, 가족: qtype 바로)
 document.getElementById('nameSubmitBtn').addEventListener('click', () => {
   playerName = document.getElementById('playerNameInput').value.trim();
   if (!playerName) return;
-  showScreen('qtypeScreen');
+  if (gameMode === 'family') {
+    renderQtypeCards();
+    showScreen('qtypeScreen');
+  } else {
+    showScreen('trackScreen');
+  }
 });
 
+// B3: URL에서 track 파라미터 복원 (새로고침 시 트랙 유지)
+(function restoreTrackFromURL(){
+  const t = new URLSearchParams(location.search).get('track');
+  if (t === 'adult' || t === 'teen') selectedTrack = t;
+})();
+
+// ===== TRACK SCREEN =====
+function selectTrack(track) {
+  selectedTrack = track;
+  history.replaceState(null, '', `?track=${track}`);
+  window.bt?.track?.('track_select', {track});
+  renderQtypeCards();
+  showScreen('qtypeScreen');
+}
+document.getElementById('trackAdultCard').addEventListener('click', () => selectTrack('adult'));
+document.getElementById('trackAdultCard').addEventListener('touchend', e => { e.preventDefault(); selectTrack('adult'); });
+document.getElementById('trackTeenCard').addEventListener('click', () => selectTrack('teen'));
+document.getElementById('trackTeenCard').addEventListener('touchend', e => { e.preventDefault(); selectTrack('teen'); });
+
 // ===== QTYPE SCREEN =====
-const qtypeData = [
-  {type:'scenario',icon:'📖',title:'시나리오형',desc:'현실적인 상황 선택',tag:'논리적'},
-  {type:'game',icon:'🎮',title:'게임 비유형',desc:'게임 상황으로 질문',tag:'게임친화'},
-  {type:'image',icon:'🖼️',title:'이미지 선택형',desc:'직관적으로 선택',tag:'직관적'},
-  {type:'rank',icon:'📊',title:'순위 매기기형',desc:'우선순위 배열',tag:'분석적'}
+const qtypeAllData = [
+  {type:'scenario',track:'adult',icon:'📖',title:'시나리오형',desc:'직업·커리어 상황 선택',tag:'논리적'},
+  {type:'game',   track:'teen', icon:'🎮',title:'게임 비유형',desc:'게임 상황으로 질문',  tag:'게임친화'},
+  {type:'image',  track:'both', icon:'🖼️',title:'이미지 선택형',desc:'직관적으로 선택',  tag:'직관적'},
+  {type:'rank',   track:'both', icon:'📊',title:'순위 매기기형',desc:'우선순위 배열',    tag:'분석적'}
 ];
-const qtypeContainer = document.getElementById('qtypeCards');
-qtypeData.forEach(q=>{
-  const card = document.createElement('div');
-  card.className = 'method-card';
-  card.innerHTML = `<div class="method-icon">${q.icon}</div><div class="method-info"><h4>${q.title}</h4><p>${q.desc}</p><div class="method-tag">${q.tag}</div></div>`;
-  card.addEventListener('click',()=>startAssessment(q.type));
-  card.addEventListener('touchend',e=>{e.preventDefault();startAssessment(q.type)});
-  qtypeContainer.appendChild(card);
+
+function renderQtypeCards() {
+  const container = document.getElementById('qtypeCards');
+  container.innerHTML = '';
+  const visible = qtypeAllData.filter(q => q.track === 'both' || q.track === selectedTrack);
+  visible.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'method-card';
+    card.innerHTML = `<div class="method-icon">${q.icon}</div><div class="method-info"><h4>${q.title}</h4><p>${q.desc}</p><div class="method-tag">${q.tag}</div></div>`;
+    card.addEventListener('click', () => startAssessment(q.type));
+    card.addEventListener('touchend', e => { e.preventDefault(); startAssessment(q.type); });
+    container.appendChild(card);
+  });
+}
+
+document.getElementById('skipFromQtype').addEventListener('click', () => {
+  const defaultType = selectedTrack === 'teen' ? 'game' : 'scenario';
+  startAssessment(defaultType);
 });
-document.getElementById('skipFromQtype').addEventListener('click',()=>startAssessment('scenario'));
 
 // ===== ASSESSMENT =====
 function startAssessment(qtype){
   selectedQType = qtype;
+  if (!selectedTrack) selectedTrack = 'adult';
   scenarios = buildScenarios(qtype);
+
+  // §C5: 0문항 차단
+  if (scenarios.length === 0) {
+    alert('선택하신 트랙과 유형의 문항이 없습니다. 다른 유형을 선택해주세요.');
+    return;
+  }
+
+  // §C5: UI 베타 안내 박스 노출
+  const notice = document.getElementById('betaNotice');
+  notice.style.display = 'block';
+  notice.innerHTML = `현재 이 검사는 <strong style="color:var(--primary);">1차 베타 버전</strong>입니다.<br>
+선택하신 트랙과 질문 유형에 맞는 <strong style="color:var(--primary);">${scenarios.length}개</strong>의 문항으로 역량 신호를 확인합니다.<br>
+이 결과는 정밀 측정이 아니라, 다음 진단으로 들어가기 위한 시작점입니다.`;
+
   round = 0;
   window._intermissionShown = false;
   comboCount = 0;
@@ -1186,8 +1282,9 @@ function startAssessment(qtype){
 function loadRound(){
   if(round >= scenarios.length){ finishAssessment(); return; }
 
-  // 중간 인터미션 (4문항 후)
-  if (round === 4 && !window._intermissionShown) {
+  // 중간 인터미션 (N >= 4일 때만, 전체의 절반 지점)
+  const midPoint = Math.floor(scenarios.length / 2);
+  if (scenarios.length >= 4 && round === midPoint && !window._intermissionShown) {
     window._intermissionShown = true;
     const body = document.getElementById('assessBody');
     body.classList.remove('fade-out');
