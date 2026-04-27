@@ -1551,22 +1551,18 @@ function animateGauge(score) {
   const scoreEl = document.getElementById('gaugeScore');
   const totalLength = 251.2;
 
-  let current = 0;
+  // §D 옵션 A: count-up 금지. 신호 라벨 즉시 표시.
+  scoreEl.textContent = toSignalLabel(score);
+
+  // 게이지 아크 애니메이션만 유지 (신호 강도 시각화, 숫자 없음)
   const duration = 1500;
   const start = performance.now();
-
   function tick(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    current = Math.round(score * eased);
     fill.style.strokeDashoffset = totalLength * (1 - (score * eased) / 100);
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    } else {
-      // §D4: 애니메이션 완료 시점에 신호 레이블로 전환
-      scoreEl.textContent = toSignalLabel(score);
-    }
+    if (progress < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 }
@@ -1793,7 +1789,7 @@ function renderResult(){
   blurCard.innerHTML = `
     <div class="result-card-title">🔒 결정 리포트 미리보기</div>
     <div class="blur-preview">
-      <p>📌 전환 경로 Top 3<br>1. 데이터 분석 전문가 (적합도 92%)<br>2. UX 리서처 (적합도 87%)<br>3. AI 트레이너 (적합도 83%)</p>
+      <p>📌 전환 경로 Top 3<br>1. 데이터 분석 전문가<br>2. UX 리서처<br>3. AI 트레이너</p>
       <p>📋 90일 실행 계획<br>1~30일: 기초 역량 강화 프로그램<br>31~60일: 실전 프로젝트 참여<br>61~90일: 포트폴리오 완성 + 네트워킹</p>
     </div>
     <div style="text-align:center; margin-bottom:12px;">
@@ -1874,9 +1870,9 @@ function renderResult(){
   const grwEl = document.getElementById('growthsList');
   if (strEl && grwEl) {
     strEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--primary);margin-bottom:8px;">🌟 강점</div>' +
-      top2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${v}점</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">이 축은 AI와 경쟁하지 말고 <strong>레버리지</strong>로 쓰세요.</div></div></div>`;}).join('');
+      top2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${toSignalLabel(v)}</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">이 축은 AI와 경쟁하지 말고 <strong>레버리지</strong>로 쓰세요.</div></div></div>`;}).join('');
     grwEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:8px;">🌱 성장 포인트</div>' +
-      bottom2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${v}점</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">작은 루틴으로 <strong>7일 안에</strong> 감각을 붙일 수 있습니다.</div></div></div>`;}).join('');
+      bottom2.map(([k,v])=>{const s=SKILLS_INFO[k];return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px;">${s.icon}</span><div style="flex:1;"><div style="font-size:13px;font-weight:600;">${s.name} · ${toSignalLabel(v)}</div><div style="font-size:12px;color:var(--text-dim);margin-top:2px;">작은 루틴으로 <strong>7일 안에</strong> 감각을 붙일 수 있습니다.</div></div></div>`;}).join('');
   }
 
   // === 7일 액션 플랜 (역량별 6개 풀 · 유형+점수 시드로 선택) ===
@@ -2052,7 +2048,7 @@ function renderFamilyResult() {
         <div class="family-compare-bar-wrap">
           <div class="family-compare-bar" style="width:0%;background:${colors[i % colors.length]}" data-target="${m.normScores[dk]}"></div>
         </div>
-        <div class="family-compare-val">${m.normScores[dk]}%</div>
+        <div class="family-compare-val">${toSignalLabel(m.normScores[dk])}</div>
       </div>`).join('')}
     </div>`;
   });
@@ -2123,7 +2119,7 @@ function renderFamilyResult() {
   const highest = familyMembers.reduce((a,b) => a.normScores[maxDiffDim] > b.normScores[maxDiffDim] ? a : b);
   const lowest = familyMembers.reduce((a,b) => a.normScores[maxDiffDim] < b.normScores[maxDiffDim] ? a : b);
 
-  talkList.innerHTML += `<div class="family-talk-item">"${diffSkill.name}"에서 ${highest.name}(${highest.normScores[maxDiffDim]}%)과 ${lowest.name}(${lowest.normScores[maxDiffDim]}%)의 차이가 가장 커요. 서로의 관점을 이야기해 보세요.</div>`;
+  talkList.innerHTML += `<div class="family-talk-item">"${diffSkill.name}"에서 ${highest.name}(${toSignalLabel(highest.normScores[maxDiffDim])})과 ${lowest.name}(${toSignalLabel(lowest.normScores[maxDiffDim])})의 차이가 가장 커요. 서로의 관점을 이야기해 보세요.</div>`;
 
   const types = [...new Set(familyMembers.map(m=>m.typeKey))];
   if (types.length > 1) {
