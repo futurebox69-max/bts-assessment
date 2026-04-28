@@ -16,6 +16,7 @@
 <!-- 폰트 연결 조기 설정 (LCP 개선) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap">
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 <!-- Track helper (safe no-op when analytics isn't loaded) -->
@@ -34,8 +35,7 @@ window.bt.track = function(name, data){
 <meta property="og:image:alt" content="AI와 함께 성장할 나의 강점을 찾는 BTS 미래역량 검사">
 <meta name="twitter:image" content="https://bts-assessment.vercel.app/og-image.png">
 <style>
-/* 폰트: 3 weight만 로드 (400 기본, 700 강조, 900 타이틀) — 기존 6 weight → 50% 축소 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+/* 폰트: <link>로 이동 (렌더블로킹 @import 제거) */
 :root {
   --bg: #0B1B2B;
   --surface: #0F2438;
@@ -49,7 +49,7 @@ window.bt.track = function(name, data){
   --green: #6EBF8B;
   --text: #F2EBDC;
   --text-dim: rgba(242,235,220,0.6);
-  --text-light: rgba(242,235,220,0.4);
+  --text-light: rgba(242,235,220,0.62);
   --border: rgba(201,162,75,0.2);
   --shadow: 0 4px 24px rgba(0,0,0,0.3);
   --radius: 20px;
@@ -133,7 +133,7 @@ button { font-family:inherit; cursor:pointer; touch-action:manipulation; }
 .why-cards { display:flex; flex-direction:column; gap:12px; margin-top:20px; }
 .why-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); }
 .why-icon { font-size:28px; flex-shrink:0; width:40px; text-align:center; }
-.why-text h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
+.why-text h2 { font-size:15px; font-weight:700; margin-bottom:4px; }
 .why-text p { font-size:13px; color:var(--text-dim); line-height:1.6; }
 
 /* ===== DIMENSION SECTION ===== */
@@ -149,7 +149,7 @@ button { font-family:inherit; cursor:pointer; touch-action:manipulation; }
 .method-card { background:var(--surface); border:1.5px solid var(--border); border-radius:16px; padding:18px; display:flex; gap:14px; align-items:center; box-shadow:var(--shadow); }
 .method-card.active { border-color:var(--primary); background:var(--primary-light); }
 .method-icon { font-size:28px; flex-shrink:0; }
-.method-info h4 { font-size:14px; font-weight:700; margin-bottom:2px; }
+.method-info h3 { font-size:14px; font-weight:700; margin-bottom:2px; }
 .method-info p { font-size:12px; color:var(--text-dim); }
 .method-tag { font-size:10px; font-weight:600; padding:2px 8px; border-radius:6px; background:rgba(108,99,255,0.1); color:var(--primary); margin-top:4px; display:inline-block; }
 
@@ -391,6 +391,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
 </style>
 </head>
 <body>
+<main>
 
 <!-- ===== SCREEN 1: LANDING ===== -->
 <div class="screen active" id="landing">
@@ -413,8 +414,8 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
           <div class="hero-stat"><div class="hero-stat-val">8</div><div class="hero-stat-label">문항</div></div>
         </div>
         <div class="hero-ctas">
-          <button class="hero-cta" id="heroStartBtn" aria-label="3분 무료 검사 시작">지금 시작하기 <span class="arrow" aria-hidden="true">→</span></button>
-          <button class="hero-cta secondary" id="heroSampleBtn" aria-label="샘플 결과 미리보기">샘플 먼저 보기</button>
+          <button class="hero-cta" id="heroStartBtn">지금 시작하기 <span class="arrow" aria-hidden="true">→</span></button>
+          <button class="hero-cta secondary" id="heroSampleBtn">샘플 먼저 보기</button>
         </div>
         <div class="hero-trust">
           <span>🔒 로그인 불필요</span>
@@ -447,28 +448,28 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="why-card">
         <div class="why-icon">🌱</div>
         <div class="why-text">
-          <h4>AI 시대엔 사라지는 일만큼, 새로 생기는 일도 많습니다</h4>
+          <h2>AI 시대엔 사라지는 일만큼, 새로 생기는 일도 많습니다</h2>
           <p>WEF Future of Jobs 2025에 따르면 2030년까지 1.7억 개 일자리가 새로 생기고, 9천만 개가 사라집니다. 중요한 건 "어떤 강점으로 전환할 것인가"입니다.</p>
         </div>
       </div>
       <div class="why-card">
         <div class="why-icon">🧭</div>
         <div class="why-text">
-          <h4>MBTI는 "지금", 이 검사는 "앞으로"</h4>
+          <h2>MBTI는 "지금", 이 검사는 "앞으로"</h2>
           <p>성격은 잘 변하지 않지만, 시대가 요구하는 역량은 빠르게 변합니다. "나는 INTJ"라는 정보보다, "내가 AI 시대에 어디서 빛날지"가 더 유용합니다.</p>
         </div>
       </div>
       <div class="why-card">
         <div class="why-icon">🎯</div>
         <div class="why-text">
-          <h4>자기 보고가 아닌, 행동 기반</h4>
+          <h2>자기 보고가 아닌, 행동 기반</h2>
           <p>"당신은 창의적입니까?"라고 묻지 않습니다. 상황을 제시하고 어떻게 반응하는지 관찰합니다. 자기 인식 편향 없이 강점과 성장 포인트를 드러냅니다.</p>
         </div>
       </div>
       <div class="why-card">
         <div class="why-icon">👨‍👩‍👧‍👦</div>
         <div class="why-text">
-          <h4>부모와 자녀가 함께 볼 수 있습니다</h4>
+          <h2>부모와 자녀가 함께 볼 수 있습니다</h2>
           <p>같은 검사를 가족이 함께 하면, 서로의 사고방식 차이가 드러납니다. "왜 우리 아이는 이렇게 생각하지?"에 대한 구조적 답을 얻을 수 있습니다.</p>
         </div>
       </div>
@@ -525,7 +526,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="method-card">
         <div class="method-icon">📖</div>
         <div class="method-info">
-          <h4>시나리오형</h4>
+          <h3>시나리오형</h3>
           <p>현실적인 상황이 주어지고, 어떻게 행동할지 선택합니다</p>
           <div class="method-tag">논리적 · 현실지향</div>
         </div>
@@ -533,7 +534,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="method-card">
         <div class="method-icon">🎮</div>
         <div class="method-info">
-          <h4>게임 비유형</h4>
+          <h3>게임 비유형</h3>
           <p>롤, 포트나이트, 마크 등 게임 상황으로 질문합니다</p>
           <div class="method-tag">은유적 · 게임친화</div>
         </div>
@@ -541,7 +542,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="method-card">
         <div class="method-icon">🖼️</div>
         <div class="method-info">
-          <h4>이미지 선택형</h4>
+          <h3>이미지 선택형</h3>
           <p>두 가지 상징 중 끌리는 것을 직관적으로 고릅니다</p>
           <div class="method-tag">직관적 · 감각형</div>
         </div>
@@ -549,7 +550,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
       <div class="method-card">
         <div class="method-icon">📊</div>
         <div class="method-info">
-          <h4>순위 매기기형</h4>
+          <h3>순위 매기기형</h3>
           <p>가치와 행동의 우선순위를 드래그로 배열합니다</p>
           <div class="method-tag">분석적 · 체계형</div>
         </div>
@@ -700,11 +701,11 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <div class="method-cards" id="trackCards">
       <div class="method-card" id="trackAdultCard">
         <div class="method-icon">💼</div>
-        <div class="method-info"><h4>성인</h4><p>직업·커리어 맥락의 질문</p><div class="method-tag">직장인 · 커리어</div></div>
+        <div class="method-info"><h3>성인</h3><p>직업·커리어 맥락의 질문</p><div class="method-tag">직장인 · 커리어</div></div>
       </div>
       <div class="method-card" id="trackTeenCard">
         <div class="method-icon">🎮</div>
-        <div class="method-info"><h4>청소년</h4><p>게임·학교 맥락의 질문</p><div class="method-tag">학생 · 진로</div></div>
+        <div class="method-info"><h3>청소년</h3><p>게임·학교 맥락의 질문</p><div class="method-tag">학생 · 진로</div></div>
       </div>
     </div>
   </div>
@@ -849,7 +850,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
   </div>
 
   <div class="family-talk-card" id="familyTalkCard">
-    <h4>🗣️ 가족 대화 주제</h4>
+    <h3>🗣️ 가족 대화 주제</h3>
     <div id="familyTalkList"></div>
   </div>
 
@@ -864,6 +865,8 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <p style="font-size:12px; color:var(--text-light);">© 2026 LoginFuture Ministry. All rights reserved.</p>
   </footer>
 </div>
+
+</main>
 
 <script>
 // ===== SCENARIO DATA =====
@@ -1245,7 +1248,7 @@ function renderQtypeCards() {
   visible.forEach(q => {
     const card = document.createElement('div');
     card.className = 'method-card';
-    card.innerHTML = `<div class="method-icon">${q.icon}</div><div class="method-info"><h4>${q.title}</h4><p>${q.desc}</p><div class="method-tag">${q.tag}</div></div>`;
+    card.innerHTML = `<div class="method-icon">${q.icon}</div><div class="method-info"><h3>${q.title}</h3><p>${q.desc}</p><div class="method-tag">${q.tag}</div></div>`;
     card.addEventListener('click', () => startAssessment(q.type));
     card.addEventListener('touchend', e => { e.preventDefault(); startAssessment(q.type); });
     container.appendChild(card);
@@ -1765,7 +1768,7 @@ function renderResult(){
     // E1 성인용
     const watchLabels = weakDims.map(d => `${d.icon} ${d.name}`).join(' · ');
     trackInsightCard.innerHTML = `
-      <div class="result-card-title">🗺 지금 여기서 더 보면 좋은 것들</div>
+      <div class="result-card-title">지금 여기서 더 보면 좋은 것들</div>
       <div class="track-block">
         <div class="track-block-label">추가 확인 영역</div>
         <p class="insight-text">${watchLabels} — 이 두 축이 지금 가장 빠르게 활성화될 여지가 있습니다. 작은 루틴 하나로 감각을 붙여 보세요.</p>
@@ -1779,7 +1782,7 @@ function renderResult(){
     // E2 청소년용
     const growLabels = weakDims.map(d => `${d.icon} ${d.name}`).join(' · ');
     trackInsightCard.innerHTML = `
-      <div class="result-card-title">🌱 더 키워보면 좋은 영역</div>
+      <div class="result-card-title">더 키워보면 좋은 영역</div>
       <div class="track-block">
         <div class="track-block-label">지금 가장 자랄 수 있는 축</div>
         <p class="insight-text">${growLabels} — 아직 펼쳐지지 않은 가능성이에요. 잘못된 게 아니라, 다음에 올 거예요.</p>
