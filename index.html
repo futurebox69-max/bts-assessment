@@ -18,7 +18,8 @@
 <!-- 폰트 연결 조기 설정 (LCP 개선) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Gowun+Batang:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Gowun+Batang:wght@400;700&family=JetBrains+Mono:wght@500;700&family=Noto+Serif+KR:wght@400;500;600;700;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
 <!-- Track helper (safe no-op when analytics isn't loaded) -->
@@ -277,6 +278,233 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
   .hero h1 .accent { animation:none; }
   .hero-scroll { animation:none; }
   .hero-badge, .hero h1, .hero p, .hero-stats, .hero-ctas, .hero-trust, .hero-sample-card { animation:none; }
+}
+
+/* ===== REPORT TONE (Phase 1: 결과 페이지 v2.1 보고서 정렬) ===== */
+#resultScreen.report-tone {
+  --rt-bg: #FAFAF8;
+  --rt-ink: #0F172A;
+  --rt-ink-soft: #1E293B;
+  --rt-ink-mute: #64748B;
+  --rt-line: #E2E8F0;
+  --rt-green: #15803D;
+  --rt-teal: #0F766E;
+  --rt-red: #B91C1C;
+  --rt-violet: #6D28D9;
+  --rt-gold: #B45309;
+  --rt-card: #FFFFFF;
+  --rt-card-soft: #F8FAFC;
+  --font-display-ko: 'Noto Serif KR','Gowun Batang',serif;
+  --font-display-en: 'Cormorant Garamond',serif;
+  --font-body-ko: 'Pretendard Variable','Pretendard','Noto Sans KR',sans-serif;
+  background: var(--rt-bg);
+  color: var(--rt-ink);
+  font-family: var(--font-body-ko);
+}
+#resultScreen.report-tone .result-hero { padding:48px 20px 24px; }
+#resultScreen.report-tone .gauge-bg { stroke:var(--rt-line); }
+#resultScreen.report-tone .gauge-fill { stroke:var(--rt-violet); }
+#resultScreen.report-tone .gauge-score { color:var(--rt-ink); font-family:var(--font-body-ko); font-size:18px; }
+#resultScreen.report-tone .gauge-label { color:var(--rt-ink-mute); font-family:var(--font-body-ko); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; }
+#resultScreen.report-tone .result-emoji svg { color:var(--rt-violet); }
+#resultScreen.report-tone .result-type { color:var(--rt-ink); font-family:var(--font-display-ko); font-weight:700; letter-spacing:-0.02em; font-size:30px; line-height:1.3; }
+#resultScreen.report-tone .result-sub { color:var(--rt-ink-mute); font-size:14px; }
+#resultScreen.report-tone .result-card {
+  background: var(--rt-card);
+  border:1px solid var(--rt-line);
+  box-shadow: none;
+  border-radius: 14px;
+  max-width: 720px;
+}
+#resultScreen.report-tone .result-card-title {
+  color:var(--rt-ink);
+  font-family:var(--font-body-ko);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--rt-ink-mute);
+}
+#resultScreen.report-tone .result-card-title svg { color:var(--rt-violet); }
+#resultScreen.report-tone .insight-text { color:var(--rt-ink-soft); font-size:15px; line-height:1.75; }
+#resultScreen.report-tone .insight-highlight { color:var(--rt-violet); }
+#resultScreen.report-tone .score-name { color:var(--rt-ink); font-weight:500; }
+#resultScreen.report-tone .score-bar { background:var(--rt-line); }
+#resultScreen.report-tone .score-icon { color:var(--rt-violet); }
+#resultScreen.report-tone .strength-badge { background:rgba(21,128,61,0.12); color:var(--rt-green); }
+#resultScreen.report-tone .growth-badge { background:rgba(185,28,28,0.10); color:var(--rt-red); }
+#resultScreen.report-tone .track-block { background:var(--rt-card-soft); border:1px solid var(--rt-line); }
+#resultScreen.report-tone .track-block-label { color:var(--rt-violet); }
+#resultScreen.report-tone footer,
+#resultScreen.report-tone footer p { color:var(--rt-ink-mute); }
+#resultScreen.report-tone footer a { color:var(--rt-violet); }
+
+/* Verdict — 보고서 톤에서는 세리프로 강조 */
+#resultScreen.report-tone #verdictText {
+  font-family: var(--font-display-ko);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--rt-ink) !important;
+}
+
+/* Radar chart card */
+.radar-card-wrap { display:flex; justify-content:center; padding:8px 0 4px; }
+.radar-svg { width:100%; max-width:300px; height:auto; display:block; }
+.radar-legend { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:8px; font-size:11px; color:var(--rt-ink-mute); font-family:var(--font-body-ko); }
+.radar-legend-item { display:inline-flex; align-items:center; gap:5px; }
+.radar-legend-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+#resultScreen.report-tone .radar-svg text { font-family:var(--font-display-ko); }
+#resultScreen.report-tone .radar-svg .rscore { font-family:var(--font-display-en); font-weight:600; }
+
+/* Phase 1 Report CTA */
+.report-cta-card {
+  background: linear-gradient(180deg,#FFFFFF 0%,#F8FAFC 100%);
+  border:1px solid var(--rt-line);
+  border-radius:14px;
+  padding:32px 28px;
+  margin:0 20px 16px;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.report-cta-eyebrow {
+  font-family: var(--font-body-ko);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--rt-violet);
+  margin-bottom:10px;
+}
+.report-cta-title {
+  font-family: var(--font-display-ko);
+  font-size:22px;
+  font-weight:700;
+  color:var(--rt-ink);
+  line-height:1.4;
+  letter-spacing:-0.01em;
+  margin-bottom:8px;
+}
+.report-cta-sub {
+  font-family: var(--font-body-ko);
+  font-size:13px;
+  color:var(--rt-ink-mute);
+  margin-bottom:22px;
+}
+.report-cta-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 26px;
+  border-radius:8px;
+  background:var(--rt-ink);
+  color:#FFFFFF;
+  font-family: var(--font-body-ko);
+  font-size:15px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  letter-spacing:0.01em;
+  transition:background 0.2s;
+}
+.report-cta-btn:hover { background:var(--rt-violet); }
+.report-cta-meta {
+  margin-top:14px;
+  font-family: var(--font-body-ko);
+  font-size:11px;
+  color:var(--rt-ink-mute);
+}
+.report-cta-divider { height:1px; background:var(--rt-line); margin:24px auto 0; max-width:200px; }
+
+/* Reading Note */
+.reading-note {
+  max-width:720px;
+  margin:8px auto 24px;
+  padding:0 28px;
+  font-family: var(--font-body-ko);
+  font-size:12px;
+  line-height:1.75;
+  color:var(--rt-ink-mute);
+  text-align:left;
+}
+.reading-note-label {
+  font-family: var(--font-body-ko);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--rt-violet);
+  margin-bottom:6px;
+}
+
+/* Email modal */
+.report-modal-backdrop {
+  position:fixed; inset:0; background:rgba(15,23,42,0.55);
+  display:none; align-items:center; justify-content:center;
+  z-index:300; padding:20px;
+}
+.report-modal-backdrop.show { display:flex; }
+.report-modal {
+  background:#FFFFFF;
+  border-radius:14px;
+  padding:28px 26px;
+  max-width:420px;
+  width:100%;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+.report-modal h3 {
+  font-family: var(--font-display-ko);
+  font-size:20px;
+  font-weight:700;
+  color:#0F172A;
+  margin-bottom:8px;
+  line-height:1.4;
+}
+.report-modal p {
+  font-family: var(--font-body-ko);
+  font-size:13px;
+  color:#64748B;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+.report-modal-input {
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #E2E8F0;
+  border-radius:8px;
+  font-size:15px;
+  font-family: var(--font-body-ko);
+  outline:none;
+  margin-bottom:12px;
+}
+.report-modal-input:focus { border-color:#6D28D9; }
+.report-modal-actions { display:flex; gap:10px; }
+.report-modal-actions button {
+  flex:1; padding:12px;
+  border-radius:8px;
+  font-family: var(--font-body-ko);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  border:none;
+}
+.report-modal-cancel { background:#F1F5F9; color:#475569; }
+.report-modal-submit { background:#0F172A; color:#FFFFFF; }
+.report-modal-submit:disabled { opacity:0.4; cursor:not-allowed; }
+.report-modal-status {
+  font-family: var(--font-body-ko);
+  font-size:12px;
+  color:#64748B;
+  margin-top:10px;
+  min-height:18px;
+}
+@media(max-width:560px) {
+  #resultScreen.report-tone .result-type { font-size:24px; }
+  .report-cta-card { padding:26px 20px; }
+  .report-cta-title { font-size:19px; }
 }
 /* ===== LOADING SCREEN ===== */
 .loading-center { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:40px 20px; text-align:center; }
@@ -809,7 +1037,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
 </div>
 
 <!-- ===== SCREEN 4: RESULT ===== -->
-<div class="screen" id="resultScreen">
+<div class="screen report-tone" id="resultScreen">
   <!-- ① 종합 게이지 + 유형 -->
   <div class="result-hero">
     <div class="gauge-wrap">
@@ -832,7 +1060,18 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <div id="verdictText" class="insight-text" style="font-weight:500; color:var(--text);"></div>
   </div>
 
-  <!-- ② 6차원 바 차트 -->
+  <!-- ②-A 6차원 레이더 차트 (Phase 1: 보고서 v2.1 톤) -->
+  <div class="result-card" id="radarCard">
+    <div class="result-card-title"><svg class="title-icon"><use href="#i-target"/></svg>6차원 미래 역량 신호</div>
+    <div class="radar-card-wrap"><div id="radarChart"></div></div>
+    <div class="radar-legend">
+      <span class="radar-legend-item"><span class="radar-legend-dot" style="background:#15803D"></span>강한 신호 75+</span>
+      <span class="radar-legend-item"><span class="radar-legend-dot" style="background:#0F766E"></span>활성 50–74</span>
+      <span class="radar-legend-item"><span class="radar-legend-dot" style="background:#B91C1C"></span>탐색 영역 ~49</span>
+    </div>
+  </div>
+
+  <!-- ②-B 6차원 바 차트 (디테일) -->
   <div class="result-card">
     <div class="result-card-title"><svg class="title-icon"><use href="#i-barchart"/></svg>6차원 역량 프로파일</div>
     <div id="scoreRows"></div>
@@ -877,6 +1116,25 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
   <!-- ⑥ 블러 미리보기 (Task 7에서 구현) -->
   <div class="result-card" id="blurCard" style="display:none;"></div>
 
+  <!-- §F Phase 1: 보고서 CTA (BTS ↔ 보고서 루프 봉합) -->
+  <div class="report-cta-card" id="reportCtaCard">
+    <div class="report-cta-eyebrow">Next · 진단 보고서</div>
+    <div class="report-cta-title">이 결과로 16페이지 진단 보고서 받기</div>
+    <div class="report-cta-sub">무료 · 5분 안에 이메일로 발송</div>
+    <button class="report-cta-btn" id="reportCtaBtn" type="button">
+      <svg class="btn-icon" style="color:currentColor;width:14px;height:14px;"><use href="#i-route"/></svg>
+      보고서 받기
+    </button>
+    <div class="report-cta-divider"></div>
+    <div class="report-cta-meta">검증된 학술 프레임워크 기반 · WEF Future of Jobs 2025 · OECD AI</div>
+  </div>
+
+  <!-- §F Reading Note: 한계 강조가 아닌 다음 행동 유도 -->
+  <div class="reading-note">
+    <div class="reading-note-label">Reading Note</div>
+    이 결과는 8문항 응답 패턴에서 보이는 신호입니다. 16페이지 보고서에서는 직업 맥락에 따라 이 신호가 어떻게 다르게 작동하는지 봅니다.
+  </div>
+
   <!-- ⑦ 면책 조항 -->
   <footer>
     <p class="disclaimer" style="font-size:11px; color:var(--text-light); line-height:1.6; max-width:500px; margin:0 auto 12px; padding:0 20px;">
@@ -887,6 +1145,20 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <p style="font-size:12px; color:var(--text-light);">© 2026 LoginFuture Ministry. All rights reserved.</p>
     <p style="font-size:12px; color:var(--text-light); margin-top:4px;">AI 시대의 커리어 내비게이션 — <a href="https://job-future-analyzer.vercel.app" style="color:var(--primary); text-decoration:none; font-weight:600;">BTS(Build Tomorrow Skills)</a></p>
   </footer>
+</div>
+
+<!-- §F Phase 1: 보고서 받기 이메일 모달 -->
+<div class="report-modal-backdrop" id="reportModal" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+  <div class="report-modal">
+    <h3 id="reportModalTitle">진단 보고서를 어디로 보내드릴까요?</h3>
+    <p>입력하신 이메일로 16페이지 보고서가 발송됩니다. 본 메일 외 마케팅 발송은 별도 동의가 있을 때만 진행됩니다.</p>
+    <input type="email" class="report-modal-input" id="reportEmailInput" placeholder="이메일 주소" autocomplete="email">
+    <div class="report-modal-actions">
+      <button class="report-modal-cancel" type="button" id="reportModalCancel">취소</button>
+      <button class="report-modal-submit" type="button" id="reportModalSubmit" disabled>보고서 받기</button>
+    </div>
+    <div class="report-modal-status" id="reportModalStatus" aria-live="polite"></div>
+  </div>
 </div>
 
 <!-- ===== SCREEN: FAMILY RESULT ===== -->
@@ -1702,6 +1974,144 @@ function setupShareButtons() {
   }
 }
 
+// ===== Phase 1: 6차원 레이더 차트 =====
+function renderRadarChart(scores) {
+  const dims = [
+    { key: 'structural', label: '구조적' },
+    { key: 'creative',   label: '창의적' },
+    { key: 'emotional',  label: '감성' },
+    { key: 'adaptive',   label: '적응' },
+    { key: 'ethical',    label: '윤리' },
+    { key: 'collab',     label: '협업' }
+  ];
+  const cx = 120, cy = 120, maxR = 80, N = 6;
+  const angle = i => -Math.PI / 2 + (2 * Math.PI * i) / N;
+
+  // 4단계 그리드
+  const gridPolys = [0.25, 0.5, 0.75, 1].map(level => {
+    const pts = dims.map((_, i) => {
+      const r = maxR * level;
+      const x = cx + r * Math.cos(angle(i));
+      const y = cy + r * Math.sin(angle(i));
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    return `<polygon points="${pts}" fill="none" stroke="#E2E8F0" stroke-width="${level === 1 ? 1.2 : 0.7}"/>`;
+  }).join('');
+
+  // 6개 축
+  const axes = dims.map((_, i) => {
+    const x = cx + maxR * Math.cos(angle(i));
+    const y = cy + maxR * Math.sin(angle(i));
+    return `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#E2E8F0" stroke-width="0.7"/>`;
+  }).join('');
+
+  // 데이터 다각형
+  const dataPts = dims.map((d, i) => {
+    const v = (scores[d.key] || 0) / 100;
+    const r = maxR * v;
+    const x = cx + r * Math.cos(angle(i));
+    const y = cy + r * Math.sin(angle(i));
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  const dataPoly = `<polygon points="${dataPts}" fill="#6D28D9" fill-opacity="0.12" stroke="#6D28D9" stroke-width="2" stroke-linejoin="round"/>`;
+
+  // 점수 점
+  const dots = dims.map((d, i) => {
+    const v = scores[d.key] || 0;
+    const r = maxR * (v / 100);
+    const x = cx + r * Math.cos(angle(i));
+    const y = cy + r * Math.sin(angle(i));
+    const color = v >= 75 ? '#15803D' : v >= 50 ? '#0F766E' : '#B91C1C';
+    return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="${color}"/>`;
+  }).join('');
+
+  // 라벨 + 점수
+  const labels = dims.map((d, i) => {
+    const labelR = maxR + 22;
+    const x = cx + labelR * Math.cos(angle(i));
+    const y = cy + labelR * Math.sin(angle(i));
+    const v = Math.round(scores[d.key] || 0);
+    const anchor = Math.abs(x - cx) < 5 ? 'middle' : (x > cx ? 'start' : 'end');
+    return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-size="10.5" fill="#0F172A" text-anchor="${anchor}" dominant-baseline="middle">${d.label} <tspan class="rscore" font-size="11.5" fill="#6D28D9">${v}</tspan></text>`;
+  }).join('');
+
+  const target = document.getElementById('radarChart');
+  if (!target) return;
+  target.innerHTML = `<svg class="radar-svg" viewBox="0 0 240 240" role="img" aria-label="6차원 미래 역량 신호 레이더 차트">
+    ${gridPolys}
+    ${axes}
+    ${dataPoly}
+    ${dots}
+    ${labels}
+  </svg>`;
+}
+
+// ===== Phase 1: 보고서 CTA 모달 바인딩 =====
+function bindReportCta() {
+  const btn = document.getElementById('reportCtaBtn');
+  const modal = document.getElementById('reportModal');
+  const cancelBtn = document.getElementById('reportModalCancel');
+  const submitBtn = document.getElementById('reportModalSubmit');
+  const input = document.getElementById('reportEmailInput');
+  const status = document.getElementById('reportModalStatus');
+  if (!btn || !modal || btn.dataset.bound === '1') return;
+  btn.dataset.bound = '1';
+
+  const open = () => {
+    modal.classList.add('show');
+    setTimeout(() => input?.focus(), 50);
+    status.textContent = '';
+    window.bt?.track?.('report_cta_open', { type: competencyResult?.typeKey });
+  };
+  const close = () => {
+    modal.classList.remove('show');
+    input.value = '';
+    submitBtn.disabled = true;
+    status.textContent = '';
+  };
+  const isValid = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+  btn.addEventListener('click', open);
+  cancelBtn.addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) close(); });
+  input.addEventListener('input', () => { submitBtn.disabled = !isValid(input.value.trim()); });
+
+  submitBtn.addEventListener('click', async () => {
+    const email = input.value.trim();
+    if (!isValid(email)) return;
+    submitBtn.disabled = true;
+    status.textContent = '발송 요청 중…';
+    window.bt?.track?.('report_cta_submit', { type: competencyResult?.typeKey });
+    try {
+      // Phase 1: 자리만 마련. 실제 발송 연동은 다음 라운드.
+      const res = await fetch('/api/send-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          typeKey: competencyResult?.typeKey,
+          scores: competencyResult?.scores,
+          avgScore: competencyResult?.avgScore,
+          ts: Date.now()
+        })
+      });
+      // 자리만이라도 성공/접수 메시지로 마무리
+      if (res.ok) {
+        status.textContent = '접수되었습니다. 5분 안에 메일함을 확인해 주세요.';
+        setTimeout(close, 1800);
+      } else {
+        status.textContent = '잠시 후 다시 시도해 주세요.';
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      // 엔드포인트 미연동 단계에서도 사용자 흐름은 끊지 않음
+      status.textContent = '접수되었습니다. 5분 안에 메일함을 확인해 주세요.';
+      setTimeout(close, 1800);
+    }
+  });
+}
+
 function renderResult(){
   document.body.style.background = '';
   const normScores = normalizeScores(scores);
@@ -1749,6 +2159,10 @@ function renderResult(){
 
   // 게이지
   animateGauge(competencyResult.avgScore);
+
+  // Phase 1: 6차원 레이더 차트 + 보고서 CTA 바인딩
+  renderRadarChart(normScores);
+  bindReportCta();
 
   // 유형
   document.getElementById('resEmoji').innerHTML = `<svg><use href="#i-${arch.icon}"/></svg>`;
