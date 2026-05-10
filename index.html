@@ -506,6 +506,57 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
   .report-cta-card { padding:26px 20px; }
   .report-cta-title { font-size:19px; }
 }
+
+/* ===== Round 2: 카드 축소 + 이름 표시 + 모바일 폰트 ===== */
+
+/* 1. 이름 인사말 — 게이지 위 eyebrow */
+#resultScreen.report-tone .result-greeting {
+  font-family: var(--font-body-ko);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--rt-violet);
+  text-align:center;
+  margin-bottom:14px;
+  padding:0 20px;
+}
+
+/* 2. 카드 축소 — .report-tone 스코프에서만 hide (다른 화면/모드 영향 X) */
+#resultScreen.report-tone #barChartCard,
+#resultScreen.report-tone #metaCard,
+#resultScreen.report-tone #remeasureCard,
+#resultScreen.report-tone #shareCard,
+#resultScreen.report-tone #trackInsightCard,
+#resultScreen.report-tone #btsCta {
+  display:none !important;
+}
+
+/* 3. 모바일 폰트 크기 — 768px 이하 */
+@media(max-width:768px) {
+  #resultScreen.report-tone .insight-text { font-size:15px; line-height:1.75; }
+  #resultScreen.report-tone .result-card-title { font-size:12px; letter-spacing:0.10em; }
+  #resultScreen.report-tone .reading-note { font-size:13px; line-height:1.75; }
+  #resultScreen.report-tone .reading-note-label { font-size:10px; }
+  #resultScreen.report-tone .gauge-label { font-size:12px; }
+  #resultScreen.report-tone .gauge-score { font-size:16px; }
+  #resultScreen.report-tone .result-greeting { font-size:12px; }
+  #resultScreen.report-tone .result-sub { font-size:14px; }
+  #resultScreen.report-tone .report-cta-eyebrow { font-size:11px; }
+  #resultScreen.report-tone .report-cta-meta { font-size:12px; }
+  #resultScreen.report-tone .radar-legend { font-size:12px; }
+  #resultScreen.report-tone .score-name { font-size:14px; }
+  #resultScreen.report-tone .strength-badge,
+  #resultScreen.report-tone .growth-badge { font-size:12px; padding:3px 10px; }
+  /* 인라인 스타일이 박힌 disclaimer/footer p 강제 오버라이드 */
+  #resultScreen.report-tone footer .disclaimer { font-size:13px !important; line-height:1.75; }
+  #resultScreen.report-tone footer p { font-size:13px !important; }
+  #resultScreen.report-tone #verdictText { font-size:18px; line-height:1.6; }
+  /* 액션 리스트 */
+  #resultScreen.report-tone #actionList li { font-size:14px !important; line-height:1.7 !important; }
+  #resultScreen.report-tone #actionList li * { font-size:inherit !important; }
+}
+
 /* ===== LOADING SCREEN ===== */
 .loading-center { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:40px 20px; text-align:center; }
 .loading-emoji { width:48px; height:48px; margin:0 auto 16px; display:block; color:var(--primary); fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; animation:loadingPulse 1.5s infinite; }
@@ -1040,6 +1091,7 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
 <div class="screen report-tone" id="resultScreen">
   <!-- ① 종합 게이지 + 유형 -->
   <div class="result-hero">
+    <div class="result-greeting" id="resGreeting" style="display:none;"></div>
     <div class="gauge-wrap">
       <svg class="gauge-svg" viewBox="0 0 200 110">
         <path class="gauge-bg" d="M 20 100 A 80 80 0 0 1 180 100"/>
@@ -1071,14 +1123,14 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     </div>
   </div>
 
-  <!-- ②-B 6차원 바 차트 (디테일) -->
-  <div class="result-card">
+  <!-- ②-B 6차원 바 차트 (디테일) — Round 2: .report-tone에서 hide -->
+  <div class="result-card" id="barChartCard">
     <div class="result-card-title"><svg class="title-icon"><use href="#i-barchart"/></svg>6차원 역량 프로파일</div>
     <div id="scoreRows"></div>
   </div>
 
-  <!-- ③ 메타분석 -->
-  <div class="result-card">
+  <!-- ③ 메타분석 — Round 2: .report-tone에서 hide -->
+  <div class="result-card" id="metaCard">
     <div class="result-card-title"><svg class="title-icon"><use href="#i-lightbulb"/></svg>사고방식 메타분석</div>
     <div id="metaInsight" class="insight-text"></div>
   </div>
@@ -1090,9 +1142,9 @@ footer a { color:var(--primary); text-decoration:none; font-weight:600; }
     <div id="growthsList"></div>
   </div>
 
-  <!-- ③-C 7일 액션 플랜 -->
+  <!-- ③-C 7일 단계별 가이드 (1·3·7일 3단계) -->
   <div class="result-card" id="actionCard">
-    <div class="result-card-title">🗓 7일 액션 플랜</div>
+    <div class="result-card-title"><svg class="title-icon"><use href="#i-route"/></svg>7일 단계별 가이드</div>
     <p class="insight-text" style="margin-bottom:12px;">작게 시작해서, 감각부터 붙이세요.</p>
     <ul id="actionList" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;"></ul>
   </div>
@@ -2167,9 +2219,17 @@ function renderResult(){
   // 유형
   document.getElementById('resEmoji').innerHTML = `<svg><use href="#i-${arch.icon}"/></svg>`;
   document.getElementById('resType').textContent = arch.title;
-  // 이름 표시
-  if (playerName) {
-    document.getElementById('resType').textContent = `${playerName}님은 ${arch.title}`;
+  // Round 2 — 이름 표시 (전용 eyebrow + 기존 resType 둘 다)
+  console.log('[BTS] renderResult playerName=', JSON.stringify(playerName), 'gameMode=', gameMode);
+  const greetEl = document.getElementById('resGreeting');
+  if (greetEl) {
+    if (playerName && playerName.length > 0) {
+      greetEl.textContent = `${playerName}님의 미래역량 진단`;
+      greetEl.style.display = 'block';
+      document.getElementById('resType').textContent = `${playerName}님은 ${arch.title}`;
+    } else {
+      greetEl.style.display = 'none';
+    }
   }
   document.getElementById('resSub').textContent = arch.sub;
 
